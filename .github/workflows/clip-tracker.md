@@ -22,7 +22,9 @@ tools:
   edit:
 permissions:
   contents: read
-  issues: write
+safe-outputs:
+  create-issue:
+    labels: [clip-tracker]
 cache:
   key: clip-tracker-${{ github.run_id }}
   path: data/found_clips.json
@@ -61,7 +63,7 @@ Look for clips from the same speaker + same source (e.g., two different cuts fro
 
 ### 4. Create the status issue
 
-Create a GitHub issue titled: `Clip Tracker Report — YYYY-MM-DD`
+Write a GitHub issue using the `create_issue` safe output. Title it: `Clip Tracker Report — YYYY-MM-DD`
 
 Include these sections:
 
@@ -91,9 +93,9 @@ Any clips that may be from the same interview/episode.
 
 Estimate how many days of content remain based on available clips (assuming 1 post per day).
 
-### 5. Label the issue
+### 5. Labels
 
-Add the label `clip-tracker` to the issue. Create the label first if it doesn't exist, using color `#1d76db`.
+The `clip-tracker` label is automatically applied via the safe-outputs configuration.
 
 ## Important rules
 
