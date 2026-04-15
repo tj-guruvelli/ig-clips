@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: ["Daily Clip Discovery"]
     types: [completed]
+    branches: [main]
   workflow_dispatch:
 engine: claude
 secrets:
@@ -22,15 +23,14 @@ tools:
   edit:
 permissions:
   contents: read
+  issues: read
 safe-outputs:
   create-issue:
     labels: [clip-tracker]
 cache:
   key: clip-tracker-${{ github.run_id }}
   path: data/found_clips.json
-  restore-keys: |
-    clip-tracker-
-    dedup-store-
+  restore-keys: [clip-tracker-, dedup-store-]
 ---
 
 # Clip Tracker for @theaibolt
