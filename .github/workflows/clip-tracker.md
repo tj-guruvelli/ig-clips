@@ -10,7 +10,7 @@ secrets:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 tools:
   github:
-    toolsets: [issues, files]
+    toolsets: [issues, repos]
   bash:
     - cat
     - jq
@@ -19,7 +19,7 @@ tools:
     - head
     - grep
     - echo
-  edit: true
+  edit:
 permissions:
   contents: read
   issues: write
