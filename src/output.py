@@ -5,9 +5,9 @@ Generates hook options using Claude API.
 """
 
 import csv
-import os
 import json
 import logging
+import os
 from datetime import datetime
 from typing import List, Dict, Any
 
@@ -46,10 +46,23 @@ Rules (strictly follow all):
 Return ONLY a JSON array of 3 strings, no other text:
 ["hook 1", "hook 2", "hook 3"]"""
 
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        log.warning("ANTHROPIC_API_KEY not set — using fallback hooks")
+        return [
+            f"{speaker} just changed everything about AI",
+            f"Nobody tells you this about {topic}",
+            f"{speaker} said what everyone was thinking",
+        ]
+
     try:
         resp = requests.post(
             ANTHROPIC_API_URL,
-            headers={"Content-Type": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+            },
             json={
                 "model": CLAUDE_MODEL,
                 "max_tokens": 200,
@@ -84,7 +97,7 @@ FIELDNAMES = [
     "full_episode_link",
     "interview_date",
     "credits_handle",
-    "already_on_brainsbyai",
+    "already_on_theaibolt",
     "already_on_competitor",
     "hook_1",
     "hook_2",
@@ -125,7 +138,7 @@ def save_output(clips: List[Dict[str, Any]], output_dir: str = "output") -> str:
                 "full_episode_link": clip.get("full_episode_link", ""),
                 "interview_date": clip.get("interview_date", ""),
                 "credits_handle": clip.get("credits_handle", ""),
-                "already_on_brainsbyai": clip.get("already_on_brainsbyai", "No"),
+                "already_on_theaibolt": clip.get("already_on_theaibolt", "No"),
                 "already_on_competitor": clip.get("already_on_competitor", "No"),
                 "hook_1": hooks[0] if len(hooks) > 0 else "",
                 "hook_2": hooks[1] if len(hooks) > 1 else "",

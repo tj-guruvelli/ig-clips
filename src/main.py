@@ -57,7 +57,7 @@ INDUSTRY_SEARCHES = [
     "self-driving AI interview", "AI drug discovery",
 ]
 
-BRAINSBYAI_HANDLE = "brainsbyai"
+THEAIBOLT_HANDLE = "theaibolt"
 
 PLATFORMS = ["instagram", "x"]  # x = Twitter/X
 
@@ -66,17 +66,18 @@ async def run():
     log.info("=== IG Clips Daily Run — %s ===", datetime.now().strftime("%Y-%m-%d"))
 
     store = DeduplicationStore("data/found_clips.json")
+    store.increment_run()
     scraper = ClipScraper(
         instagram_user=os.getenv("INSTAGRAM_USERNAME"),
         instagram_pass=os.getenv("INSTAGRAM_PASSWORD"),
         firecrawl_key=os.getenv("FIRECRAWL_API_KEY"),
     )
 
-    # Step 1 — pull @brainsbyai already-posted content
-    log.info("Step 1: Auditing @brainsbyai for already-posted clips...")
-    already_posted = await scraper.audit_account(BRAINSBYAI_HANDLE, platform="instagram")
+    # Step 1 — pull @theaibolt already-posted content
+    log.info("Step 1: Auditing @theaibolt for already-posted clips...")
+    already_posted = await scraper.audit_account(THEAIBOLT_HANDLE, platform="instagram")
     store.register_posted(already_posted)
-    log.info("  Found %d clips already posted on @brainsbyai", len(already_posted))
+    log.info("  Found %d clips already posted on @theaibolt", len(already_posted))
 
     # Step 2+3 — search across platforms
     all_candidates = []
@@ -120,7 +121,26 @@ async def run():
         store.save()
         log.info("Output saved → %s", output_path)
     else:
+        store.save()
         log.info("No new qualifying clips found today.")
+
+    # Step 7 — report tracking stats and available source library
+    stats = store.get_stats()
+    log.info("=== Tracking Stats ===")
+    log.info("  Runs: %d | Total found: %d | Qualified: %d | Posted: %d",
+             stats["runs"], stats["total_found"], stats["total_qualified"], stats["total_posted"])
+    log.info("  1M+ view sources: %d total | %d available (not yet posted)",
+             stats["total_over_1m"], stats["available_1m_sources"])
+
+    source_library = store.get_source_library()
+    if source_library:
+        log.info("=== Top Available Source Clips (1M+ views, not yet posted) ===")
+        for clip in source_library[:10]:
+            log.info("  %s | %s views | %s | %s",
+                     clip.get("url", "?"),
+                     f"{clip.get('views', 0):,}",
+                     clip.get("speaker", "Unknown"),
+                     clip.get("source", "Unknown source"))
 
     log.info("=== Run complete ===")
 

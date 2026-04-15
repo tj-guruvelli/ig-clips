@@ -132,7 +132,7 @@ class ClipScraper:
                 "full_episode_link": "",
                 "interview_date": None,
                 "credits_handle": _extract_credits_handle(caption),
-                "already_on_brainsbyai": "No",
+                "already_on_theaibolt": "No",
                 "already_on_competitor": "No",
             }
         except Exception as e:
@@ -140,7 +140,7 @@ class ClipScraper:
             return None
 
     async def _instagram_audit_account(self, handle: str) -> List[Dict]:
-        """Pull recent reels from an account to build the brainsbyai exclusion list."""
+        """Pull recent reels from an account to build the theaibolt exclusion list."""
         clips = []
         page = self._page
         try:
@@ -223,7 +223,7 @@ class ClipScraper:
                 "full_episode_link": "",
                 "interview_date": None,
                 "credits_handle": "",
-                "already_on_brainsbyai": "No",
+                "already_on_theaibolt": "No",
                 "already_on_competitor": "No",
             }
         except Exception as e:
@@ -282,7 +282,7 @@ class ClipScraper:
                     "full_episode_link": "",
                     "interview_date": None,
                     "credits_handle": "",
-                    "already_on_brainsbyai": "No",
+                    "already_on_theaibolt": "No",
                     "already_on_competitor": "No",
                 })
             return clips
