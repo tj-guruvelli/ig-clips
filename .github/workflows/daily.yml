@@ -6,6 +6,9 @@ on:
     - cron: "0 8 * * *"
   workflow_dispatch:  # allows manual trigger from GitHub UI
 
+permissions:
+  contents: write
+
 jobs:
   discover-clips:
     runs-on: ubuntu-latest
@@ -16,8 +19,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Mark workspace as safe for git
+        shell: bash
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install dependencies
+        shell: bash
         run: pip install -r requirements.txt
 
       - name: Restore dedup store
@@ -29,32 +40,54 @@ jobs:
             dedup-store-
 
       - name: Run clip discovery
+        shell: bash
         env:
           INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
           INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          set -euo pipefail
           cd src
           python main.py
 
       - name: Save updated dedup store
+        if: always()
         uses: actions/cache/save@v4
         with:
           path: data/found_clips.json
           key: dedup-store-${{ github.run_id }}
 
       - name: Upload daily report as artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: clips-report-${{ github.run_number }}
           path: output/clips_*.csv
           retention-days: 30
+          if-no-files-found: warn
 
       - name: Commit dedup store back to repo
+        if: always()
+        working-directory: ${{ github.workspace }}
+        shell: bash
         run: |
-          git config user.name "github-actions[bot]"
+          set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ ! -f data/found_clips.json ]; then
+            echo "No dedup store to commit — skipping."
+            exit 0
+          fi
+
           git add data/found_clips.json
-          git diff --staged --quiet || git commit -m "chore: update dedup store [skip ci]"
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update dedup store [skip ci]"
           git push
