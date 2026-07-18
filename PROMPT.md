@@ -6,7 +6,7 @@ When updating search criteria or rules, update both this file AND the relevant s
 
 | This file section | Corresponding code file |
 |---|---|
-| STEP 1 — @brainsbyai audit | `src/scraper.py` → `audit_account()` |
+| STEP 1 — @theaibolt audit | `src/scraper.py` → `audit_account()` |
 | STEP 2/3 — Search categories | `src/main.py` → speaker/query arrays |
 | STEP 4 — Qualify each clip | `src/qualifier.py` |
 | STEP 5 — Source research | `src/scraper.py` → `_extract_source()` |
@@ -19,10 +19,12 @@ AI with 1M+ views. Focus specifically on accounts posting
 interview/podcast format content (not memes, tools, or other formats).
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 1 — CHECK @brainsbyai FIRST
+STEP 1 — CHECK @theaibolt FIRST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Before searching anywhere, navigate to @brainsbyai and review 
-recent reels. Note every speaker and topic already posted so you 
+Before searching anywhere, pull @theaibolt's FULL post history 
+(every reel, not just recent ones — a recent-only sample silently 
+misses older posts and causes duplicate recommendations). Note every 
+speaker and topic already posted so you 
 can cross-reference and avoid duplicates throughout this process.
 Cross-reference by speaker name AND topic — not just exact clip.
 Build a running list of what has already been posted before 
@@ -43,6 +45,16 @@ For each keyword search:
   podcast studio settings
 - Go to each discovered account's Reels tab and audit for 
   qualifying clips
+
+── CATEGORY 0: COMPETITOR THEME-PAGE AUDIT (highest yield — do first) ──
+Scrape competitor and benchmark AI theme pages directly and mine their
+recent reels. They post the same 30-90s AI-interview-clip format, so their
+posts are pre-qualified on format and carry full metadata (views, duration,
+date, and source credits in the caption). Dedup every candidate against
+@theaibolt by speaker AND topic.
+Accounts: @thewizeai, @evolving.ai, @aitherevolution, @theaifield, @wizofai,
+@theaipage, @ainterestingupdate, @innovation, @godofprompt, @ai_wealth,
+@genwealth.ai, @airesearches, @chatgptricks, @power.ai, @artificialintelligenceee.
 
 ── CATEGORY 1: SPEAKER NAME SEARCHES ──
 Search each speaker name individually on Instagram and X.
@@ -179,7 +191,7 @@ Additional X-specific instructions:
 - Look for clips that have NOT yet appeared on Instagram —
   this is your early-mover advantage
 
-Cross-reference every X clip against @brainsbyai before flagging.
+Cross-reference every X clip against @theaibolt before flagging.
 If a clip has already been posted by a competitor on Instagram,
 skip it — UNLESS it performed exceptionally well and could be
 reposted with a stronger hook and a fresh angle.
@@ -209,12 +221,28 @@ The clip must clearly fit at least one of:
 - Inspirational (vision, mindset, future of humanity)
 - Emotional (fear, awe, personal stakes, job loss)
 - Controversial (challenges mainstream thinking or institutions)
+Target mix across the page: Educational majority, Controversial ~25%,
+Emotional/entertaining ~10%, Inspirational the remainder. Bias selection
+toward Educational + Controversial.
 
 SPOKEN WORDS TEST:
 AI relevance must exist in what the speaker actually SAYS —
 not just in the caption added by the account posting it.
 If the speaker never mentions AI or tech disruption in the clip,
 skip it regardless of how the account framed it.
+WIDENED (2026-07-07): the speaker does NOT have to be an AI or tech
+figure. Any well-known speaker in ANY field qualifies if they genuinely
+discuss AI — its value, risks, disruption, or their own adoption of it
+(e.g. a doctor on AI in medicine, a musician on AI music, an athlete or
+coach, a lawyer, an economist, a chef, a CEO adopting AI). The clip just
+has to be REAL spoken content that is actually about AI, in any industry.
+
+NOTE — 1M+ BACKLOG MODE: the scheduled routine (ig-clips-daily-discovery
+SKILL.md) maintains a rolling pool of >=100 unposted clips with 1,000,000+
+views. In that mode the VIEWS gate (1M+) is the hard filter, DURATION is
+preferred 30-90s but longer viral clips are kept and cut later, and older
+evergreen clips are allowed (age flagged). The format + spoken-words +
+not-already-posted rules above still apply exactly.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STEP 5 — SOURCE RESEARCH (for every qualifying clip)
@@ -260,14 +288,16 @@ Original source: [podcast or event name + episode number if known]
 Full episode link: [YouTube or Spotify URL]
 Interview date: [date of original interview]
 Credits handle: [@handle of original media source for caption credits]
-Already on @brainsbyai: [Yes / No]
+Already on @theaibolt: [Yes / No]
 Already on competitor page: [Yes / No — if yes, name the account]
 
 HOOK OPTIONS (3 variations):
 Formula: Subject named + tension created + resolution withheld
-Rules: Under 8 words. Grade 5 reading level. No em dashes. 
+Rules: Under 15 words (1-2 lines). Grade 5 reading level. No em dashes.
 No colons before speaker names. No brain emoji on opening line.
-Never resolve the curiosity gap in the hook itself.
+Lead with the speaker's name. Create a massive curiosity gap and
+never resolve it in the hook itself.
+See theaibolt/BRAND.md "Hook Framework" for the full 3-round refinement system.
 
 1.
 2.

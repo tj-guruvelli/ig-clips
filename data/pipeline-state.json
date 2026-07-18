@@ -1,0 +1,194 @@
+{
+  "_schema": "stage one of: BACKLOGGED > SELECTED > PREPPED > RENDERED > VERIFIED > READY | REVIEW | BLOCKED. attempts track budget spend. flags carry escalations (QUOTA, UNCONFIRMED_SOURCE, RENDER_FAIL, WRONG_FACE, NO_CAPTIONS). Only the loop writes this file.",
+  "goal": "Maintain >=2 VERIFIED reels ready to post at all times (posting cadence 2x/day)",
+  "last_loop_run": "2026-07-17",
+  "loop_iterations_total": 1,
+  "clips": [
+    {
+      "url": "https://www.instagram.com/p/DZ_-Ea2ggkY/",
+      "speaker": "Jeremy Grantham",
+      "topic": "AI's importance is being confused with AI being a safe investment; warns of a bubble",
+      "slug": "grantham-ai-bubble",
+      "stage": "SELECTED",
+      "stage_updated": "2026-07-17",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": [
+        "2026-07-17 loop iteration 1: BACKLOGGED->SELECTED (H1: Grantham was the designated first clip per 2026-07-12 session; user directive 2026-07-17 = focus phases 1-2, no posting). Next stage: PREP via theaibolt-reel-prep."
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/p/DZCLt2xOpcf/",
+      "speaker": "Mo Gawdat",
+      "topic": "30% of jobs could disappear by 2028 because of AI",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/p/Cxv8gnOJSr8/",
+      "speaker": "Mark Zuckerberg",
+      "topic": "Recording a podcast inside the Metaverse as photorealistic avatars",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/p/C-L1Ke_yVeI/",
+      "speaker": "Elon Musk",
+      "topic": "Neuralink brain-computer interface technical deep dive",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/p/Czb_7L9ykFL/",
+      "speaker": "Elon Musk",
+      "topic": "AI, physics, and the future of humanity (Lex episode 400)",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/p/C9BEngdtisM/",
+      "speaker": "Romain Huet",
+      "topic": "GPT-4o live vision demo reading text on stage",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/p/DRzutNqjAbm/",
+      "speaker": "Unnamed couple (Meta data-center neighbors)",
+      "topic": "The real-world human cost of living next to an AI data center",
+      "slug": null,
+      "stage": "REVIEW",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    },
+    {
+      "url": "https://www.instagram.com/reel/DK89ikhKKmF/",
+      "speaker": "Geoffrey Hinton",
+      "topic": "Diary of a CEO sit-down: AI taking jobs, the 6 deadly risks of AI",
+      "slug": null,
+      "stage": "BLOCKED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [
+        "DUP_ALREADY_POSTED"
+      ],
+      "prep_package": null,
+      "mp4": null,
+      "history": [
+        "2026-07-12 dedup-verifier: DUP of posted DXpHqxuERmo"
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/reel/DNVhFZ4R3Om/",
+      "speaker": "Geoffrey Hinton",
+      "topic": "Anderson Cooper interview: AI could wipe out humanity, needs maternal instincts",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": [
+        "2026-07-12 dedup-verifier: CLEAR vs full 139-post history"
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/reel/DJqy2NdBvKG/",
+      "speaker": "Geoffrey Hinton",
+      "topic": "Nobel Prize speech/podcast: AI productivity gains, unequal distribution of benefits",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": [
+        "2026-07-12 dedup-verifier: CLEAR vs full 139-post history"
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/reel/DUGuGKAja3M/",
+      "speaker": "Yoshua Bengio",
+      "topic": "What to do about AI if things go wrong (French-language interview)",
+      "slug": null,
+      "stage": "BACKLOGGED",
+      "stage_updated": "2026-07-12",
+      "attempts": {
+        "source_verify": 0,
+        "render": 0
+      },
+      "flags": [],
+      "prep_package": null,
+      "mp4": null,
+      "history": []
+    }
+  ]
+}
