@@ -31,13 +31,10 @@ jobs:
         shell: bash
         run: pip install -r requirements.txt
 
-      - name: Restore dedup store
-        uses: actions/cache@v4
-        with:
-          path: data/found_clips.json
-          key: dedup-store-${{ github.run_id }}
-          restore-keys: |
-            dedup-store-
+      # NOTE: the dedup store lives in the repo itself (checked out above and
+      # committed back below). An actions/cache restore here previously
+      # overwrote the checked-out file with a stale cached copy every run,
+      # erasing the store (see commit d1a9864). Do not re-add caching for it.
 
       - name: Run clip discovery
         shell: bash
@@ -50,13 +47,6 @@ jobs:
           set -euo pipefail
           cd src
           python main.py
-
-      - name: Save updated dedup store
-        if: always()
-        uses: actions/cache/save@v4
-        with:
-          path: data/found_clips.json
-          key: dedup-store-${{ github.run_id }}
 
       - name: Upload daily report as artifact
         if: always()
