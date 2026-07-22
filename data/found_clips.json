@@ -55,7 +55,21 @@
     "https://www.instagram.com/p/DZ5DZotNS3c/",
     "https://www.instagram.com/p/DaQdXyaTqek/",
     "https://www.instagram.com/p/DZuh9jkg7QR/",
-    "https://www.instagram.com/p/C9dFOcRN9m3/"
+    "https://www.instagram.com/p/C9dFOcRN9m3/",
+    "https://twitter.com/Hesamation/status/2078565094779244802",
+    "https://twitter.com/mreflow/status/1663244486091194368",
+    "https://www.instagram.com/reel/DQUhcagkvOj/",
+    "https://www.instagram.com/reel/DYmksjDoykn/",
+    "https://www.instagram.com/reel/DY48YG9ILQ-/",
+    "https://www.instagram.com/reel/DN1KONh3q8z/",
+    "https://www.instagram.com/reel/DauWOAdBU6w/",
+    "https://www.instagram.com/reel/Cs8ERfuAQn4/",
+    "https://www.instagram.com/reel/DM8ctKUu46P/",
+    "https://twitter.com/elonmusk/status/1801976488251814048",
+    "https://twitter.com/MarioNawfal/status/1885645176774816217",
+    "https://www.instagram.com/reel/DC1yyERPTX3/",
+    "https://www.instagram.com/reel/DSarp4aD6ft/",
+    "https://www.instagram.com/reel/DWyvY17iDEz/"
   ],
   "posted_urls": [
     "https://www.instagram.com/p/DabeOExxUtN/",
@@ -202,8 +216,8 @@
     "https://www.instagram.com/p/DXXif4oxVRy/",
     "https://www.instagram.com/p/DXmNiS7EVuQ/"
   ],
-  "last_updated": "2026-07-22T00:00:00Z",
-  "notes": "posted_urls = full @theaibolt history, refreshed 2026-07-09 (143 of 143 posts captured, up from 139 on 2026-07-07). found_urls unchanged from 2026-07-07 (30 clips) — the 2026-07-09 sweep of 21 additional accounts (757 reels) plus a keyword 'popular reels' search (37 reels, 8 cross-industry queries: AI doctor/lawyer/trader/musician/athlete, CEO replaced by AI, AI takes jobs, AI warning) surfaced ZERO net-new qualifying URLs — every AI-relevant 1M+ hit was already in found_urls as a dup of a posted topic (Dario Amodei military-refusal DVTzfbqjmWk, Roman Yampolskiy AGI-2027 DRvFVXvj5XV), and the keyword search's viral-tier reels were not AI-relevant (all AI reels from that search topped out ~64K views, well under the 1M gate). FINDING (2026-07-09): source exhaustion, not quota exhaustion, is now the binding constraint — see backlog.json status field for the full account list swept and untried next levers (X/Twitter search, direct speaker-name searches for Tier 2/3 names, relaxing the well-known-speaker bar).",
+  "last_updated": "2026-07-22T18:30:00Z",
+  "notes": "2026-07-22: theaibolt posted_urls re-verified via Apify (200-limit sweep, 142 items returned / 143 known) - identical to prior sweep, zero new posts, zero pruning needed. The 22 clips seeded earlier today in clips_log (from airesearches/evolving.ai/thewizeai/theaipage) were audited and marked disqualified: all are AI-generated/CGI video with no real speaker (speaker field empty on every entry), failing the hard FORMAT gate - they were NOT promoted to backlog.json. Ran the two untried levers flagged 2026-07-09: X/Twitter search (api-ninja/x-twitter-advanced-search) and direct speaker-name + cross-industry keyword search on Instagram (data-slayer/instagram-search-reels), both via 3 parallel subagents. Found 14 new qualifying-or-review-tier URLs, appended above. found_urls now includes every URL ever surfaced as a 1M+ candidate (available or review status) across all runs; the found-then-rejected 22 AI-generated clips are tracked only in clips_log, not found_urls, since they never qualified. See data/backlog.json 'status' field for the full run narrative.",
   "clips_log": {
     "https://www.instagram.com/p/Da7kkKlKMJG/": {
       "platform": "instagram",
@@ -214,10 +228,12 @@
       "topic": "🏆⚽ This AI recreation travels back to 2007, reimagining baby Lamine Yamal in the bathtub during his ",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/Da4YBQjqWHy/": {
       "platform": "instagram",
@@ -228,10 +244,12 @@
       "topic": "🤖 The robot fighting league is getting serious.  In Shenzhen, China, EngineAI launched URKL, a full-",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaaKVPfqlLe/": {
       "platform": "instagram",
@@ -242,10 +260,12 @@
       "topic": "⚽🔥 Dembélé had the penalty… but he gave it to Mbappé.  This AI anime version turns France vs Paragua",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaXOfU-qG6s/": {
       "platform": "instagram",
@@ -256,10 +276,12 @@
       "topic": "We are still so early. 👀   Three years ago, this is what AI video actually looked like: warped faces",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaUZ6SWKkrK/": {
       "platform": "instagram",
@@ -270,10 +292,12 @@
       "topic": "⚽🔥 The Messi and Ronaldo fusion finally has a name.  AI is taking football storytelling into a whole",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZr-edMsdKw/": {
       "platform": "instagram",
@@ -284,10 +308,12 @@
       "topic": "AMD CEO Lisa Su recently demonstrated a compact AI PC powered by AMD’s Ryzen AI Max+ 395, but the mo",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZwxxKkssQM/": {
       "platform": "instagram",
@@ -298,10 +324,12 @@
       "topic": "The ending took me out. 😭 This is peak humanoid robot comedy.  China’s Unitree humanoid robot starts",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaqAxNDzbfk/": {
       "platform": "instagram",
@@ -312,10 +340,12 @@
       "topic": "This is CINEMA 🏴󠁧󠁢󠁥󠁮󠁧󠁿🇳🇴 What if England's World Cup run was a medieval fantasy quest?   Well, it ha",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DavETSJTfpM/": {
       "platform": "instagram",
@@ -326,10 +356,12 @@
       "topic": "What if Japan built a live-action theater show for the greatest anime fights ever animated?  Doflami",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DWRnMAhgXev/": {
       "platform": "instagram",
@@ -340,10 +372,12 @@
       "topic": "Follow @thewizeai to stay ahead with AI  This startup lets you order sunlight from space to your exa",
       "format": "interview",
       "credits_handle": "@thewizeai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZtpnONMzk4/": {
       "platform": "instagram",
@@ -354,10 +388,12 @@
       "topic": "The 2026 World Cup may already have its funniest food meme: the FIFA 15.  The joke comes from the “f",
       "format": "interview",
       "credits_handle": "@airesearches",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaXGN3YzaVH/": {
       "platform": "instagram",
@@ -368,10 +404,12 @@
       "topic": "Every so often a match turns into a story bigger than the scoreline, and this was one of them.  A na",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaU-l4lTj2w/": {
       "platform": "instagram",
@@ -382,10 +420,12 @@
       "topic": "AI is acclerating so fast 🤯. Prompt:  Young Korean woman, early 20s, natural everyday look. Charcoal",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DafiXAhToEX/": {
       "platform": "instagram",
@@ -396,10 +436,12 @@
       "topic": "We are still so early it's almost hard to believe.  Melting fingers, faces morphing mid-sentence, au",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaP3SX_zXO4/": {
       "platform": "instagram",
@@ -410,10 +452,12 @@
       "topic": "Tom and Jerry has just been pulled into hyperrealism, and it looks like it was shot on a real set.  ",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaivyqBzcYS/": {
       "platform": "instagram",
@@ -424,10 +468,12 @@
       "topic": "This is too good 😭. Someone used AI to drop Erling Haaland into the legendary Techno Viking meme, an",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZ_6sY0Tow6/": {
       "platform": "instagram",
@@ -438,10 +484,12 @@
       "topic": "What if the two players set to inherit football once Messi and Ronaldo finally walk away faced each ",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZt0MDhz42M/": {
       "platform": "instagram",
@@ -452,10 +500,12 @@
       "topic": "Midjourney, the image generation company, just built the sequel to the MRI.  Step onto a platform, d",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZ5DZotNS3c/": {
       "platform": "instagram",
@@ -466,10 +516,12 @@
       "topic": "What if the four most powerful villains in fiction sat down at one table and immediately forgot they",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DaQdXyaTqek/": {
       "platform": "instagram",
@@ -480,10 +532,12 @@
       "topic": "What if the future of Hollywood belongs to small teams who can turn any idea into a finished film us",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/DZuh9jkg7QR/": {
       "platform": "instagram",
@@ -494,10 +548,12 @@
       "topic": "WORLD CUP 2026 48 nations, 1 dream. thebluehorizon_ai turned every nation into its own surreal footb",
       "format": "interview",
       "credits_handle": "@evolving.ai",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     },
     "https://www.instagram.com/p/C9dFOcRN9m3/": {
       "platform": "instagram",
@@ -508,13 +564,15 @@
       "topic": "This pocket-sized AI drone, called the Stinger, can kill in seconds. facialrecognition targettrackin",
       "format": "interview",
       "credits_handle": "@theaipage",
-      "status": "qualified",
+      "status": "disqualified",
       "over_1m_views": true,
       "first_found": "2026-07-22",
-      "last_seen": "2026-07-22"
+      "last_seen": "2026-07-22",
+      "qualified": false,
+      "disqualified_reason": "AI-generated/CGI video with no real speaker - fails FORMAT hard gate (real person speaking required)"
     }
   },
-  "total_found": 56,
-  "total_qualified": 22,
+  "total_found": 70,
+  "total_qualified": 0,
   "total_over_1m": 22
 }
