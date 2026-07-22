@@ -1,4 +1,4 @@
-# IG Clips — Daily AI Clip Discovery Engine
+# IG Clips - Daily AI Clip Discovery Engine
 
 Finds viral AI podcast/interview clips on Instagram and X every day.
 Deduplicates across runs so nothing is ever surfaced twice.
@@ -48,7 +48,7 @@ python main.py
 ## Deduplication
 
 `data/found_clips.json` is committed back to the repo after every run.
-This is the single source of truth — if a URL is in this file, it will never appear again.
+This is the single source of truth - if a URL is in this file, it will never appear again.
 
 ---
 
