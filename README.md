@@ -8,10 +8,10 @@ Outputs a CSV report with 3 hook variations per clip.
 
 ## How it works
 
-1. **Audits @brainsbyai** first — registers already-posted clips so they're never flagged
+1. **Audits @brainsbyai** first - registers already-posted clips so they're never flagged
 2. **Searches Instagram + X** using the full keyword framework (Tier 1–3 speakers, topics, industry disruptions, viral moments, source platforms)
-3. **Qualifies each clip** — format, duration (30–90s), date (last 12 months), content pillar, spoken AI relevance
-4. **Deduplicates** against `data/found_clips.json` — any URL ever found is permanently excluded from future runs
+3. **Qualifies each clip** - format, duration (30–90s), date (last 12 months), content pillar, spoken AI relevance
+4. **Deduplicates** against `data/found_clips.json` - any URL ever found is permanently excluded from future runs
 5. **Generates 3 hook options** per clip via Claude API
 6. **Outputs** a dated CSV to `output/clips_YYYY-MM-DD.csv`
 
