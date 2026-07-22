@@ -40,6 +40,9 @@ python main.py
    - `INSTAGRAM_PASSWORD`
    - `FIRECRAWL_API_KEY`
    - `ANTHROPIC_API_KEY`
+   - `COMPOSIO_API_KEY`
+   - `METRICOOL_API_KEY`
+   - `APIFY_API_KEY`
 3. The workflow runs daily at **8:00 AM UTC** automatically
 4. Download the CSV from the **Actions → Artifacts** tab after each run
 
