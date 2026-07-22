@@ -243,45 +243,56 @@ class ClipScraper:
     # ── Firecrawl fallback ───────────────────────────────────────────────────
 
     def _firecrawl_search(self, query: str, site: str = "instagram.com") -> List[Dict]:
-        """Firecrawl API-based search as fallback when Playwright is blocked."""
+        """Firecrawl web search (v2 API) — the login-free discovery path.
+
+        Returns reel/post URLs plus title+description used for qualification.
+        NOTE: web search does NOT expose Instagram view counts, so `views`
+        stays None here — 1M-view flagging is a separate enrichment step, not
+        done at discovery time."""
         if not self.firecrawl_key or not REQUESTS_AVAILABLE:
             return []
         try:
             resp = requests.post(
-                "https://api.firecrawl.dev/v1/search",
+                "https://api.firecrawl.dev/v2/search",
                 headers={
                     "Authorization": f"Bearer {self.firecrawl_key}",
                     "Content-Type": "application/json",
                 },
                 json={
-                    "query": f"site:{site} {query} reel",
-                    "pageOptions": {"fetchPageContent": True},
+                    "query": f"{query} reel",
                     "limit": 10,
+                    "sources": [{"type": "web"}],
+                    "includeDomains": [site],
                 },
-                timeout=30,
+                timeout=60,
             )
             resp.raise_for_status()
-            results = resp.json().get("data", [])
+            payload = resp.json()
+            data = payload.get("data", {})
+            # v2 returns {"data": {"web": [...]}}; legacy v1 was {"data": [...]}.
+            results = data.get("web", []) if isinstance(data, dict) else data
             clips = []
             for r in results:
-                url = r.get("url", "")
-                if "/reel/" not in url and "/status/" not in url:
+                url = r.get("url") or (r.get("metadata") or {}).get("sourceURL", "")
+                if not any(seg in url for seg in ("/reel/", "/reels/", "/p/", "/status/")):
                     continue
-                content = r.get("markdown", "") or r.get("content", "")
+                text = " ".join(
+                    filter(None, [r.get("title"), r.get("description"), r.get("markdown")])
+                )[:500]
                 clips.append({
                     "url": url,
                     "platform": "instagram" if "instagram" in url else "x",
                     "views": None,
                     "duration_sec": None,
-                    "caption": content[:500],
-                    "speaker": _extract_speaker(content),
-                    "topic": _extract_topic(content),
-                    "format": _detect_format(content),
+                    "caption": text,
+                    "speaker": _extract_speaker(text),
+                    "topic": _extract_topic(text),
+                    "format": _detect_format(text),
                     "posted_date": None,
-                    "original_source": _extract_source(content),
+                    "original_source": _extract_source(text),
                     "full_episode_link": "",
                     "interview_date": None,
-                    "credits_handle": "",
+                    "credits_handle": _extract_credits_handle(text),
                     "already_on_theaibolt": "No",
                     "already_on_competitor": "No",
                 })
@@ -292,7 +303,21 @@ class ClipScraper:
 
     # ── Public interface ─────────────────────────────────────────────────────
 
+    def _browser_mode(self) -> bool:
+        """Browser scraping is OPT-IN: requires IGCLIPS_USE_BROWSER=1, IG creds,
+        and Playwright. Default is Firecrawl-only — the IG browser path is
+        rate-limited to ~0 by anti-bot in CI, adds ~20s/query, and launching
+        chromium with no binary crashes the run before Firecrawl is reached."""
+        return (
+            os.getenv("IGCLIPS_USE_BROWSER") == "1"
+            and bool(self.instagram_user and self.instagram_pass)
+            and PLAYWRIGHT_AVAILABLE
+        )
+
     async def audit_account(self, handle: str, platform: str) -> List[Dict]:
+        if not self._browser_mode():
+            log.info("Browser disabled (default) — skipping @%s audit; dedup store already carries posted_urls", handle)
+            return []
         await self._start_browser()
         try:
             if platform == "instagram":
@@ -305,19 +330,26 @@ class ClipScraper:
         return []
 
     async def search(self, query: str, platform: str) -> List[Dict]:
+        site = "instagram.com" if platform == "instagram" else "x.com"
+
+        # Firecrawl is the PRIMARY, login-free discovery path.
+        if self.firecrawl_key:
+            fc = self._firecrawl_search(query, site=site)
+            if fc:
+                return fc
+
+        # Browser scrape is opt-in only (IGCLIPS_USE_BROWSER=1 + IG creds).
+        if not self._browser_mode():
+            return []
+
         results = []
         await self._start_browser()
         try:
             if platform == "instagram":
                 await self._instagram_login()
                 results = await self._instagram_search(query)
-                if not results and self.firecrawl_key:
-                    log.info("  Playwright returned 0 — falling back to Firecrawl")
-                    results = self._firecrawl_search(query, site="instagram.com")
             elif platform == "x":
                 results = await self._x_search(query)
-                if not results and self.firecrawl_key:
-                    results = self._firecrawl_search(query, site="x.com")
         except Exception as e:
             log.error("Search failed [%s / %s]: %s", platform, query, e)
         finally:
