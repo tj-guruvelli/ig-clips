@@ -73,6 +73,14 @@ async def run():
         firecrawl_key=os.getenv("FIRECRAWL_API_KEY"),
     )
 
+    # ── GUARD 1: no scraping backend => fail fast, never report a fake success.
+    if not scraper.firecrawl_key and not (scraper.instagram_user and scraper.instagram_pass):
+        raise SystemExit(
+            "FATAL: no scraping backend configured. Set FIRECRAWL_API_KEY (or "
+            "INSTAGRAM_USERNAME + INSTAGRAM_PASSWORD). Refusing to run 0-source and "
+            "report an empty 'success' (this hid 97 green-but-empty runs for months)."
+        )
+
     # Step 1 — pull @theaibolt already-posted content
     log.info("Step 1: Auditing @theaibolt for already-posted clips...")
     already_posted = await scraper.audit_account(THEAIBOLT_HANDLE, platform="instagram")
@@ -98,6 +106,21 @@ async def run():
             all_candidates.extend(candidates)
 
     log.info("Total raw candidates found: %d", len(all_candidates))
+
+    # ── GUARD 2: 0 raw candidates from a FULL sweep is a broken/blocked scrape
+    # integration (bad key, 4xx, quota, or IP block), NOT a legitimate quiet day —
+    # a working scrape always returns *some* candidates even if all are dupes or
+    # unqualified. Fail LOUD (non-zero exit) so the run goes RED instead of
+    # silently reporting an empty success. This is the exact bug that let a broken
+    # Firecrawl integration pass 97 "successful" runs while sourcing 0 clips.
+    if not all_candidates:
+        store.save()  # persist the run counter, then fail
+        raise SystemExit(
+            f"FATAL: 0 raw candidates from {len(search_queries) * len(PLATFORMS)} "
+            f"searches across {PLATFORMS}. This is a SCRAPE INTEGRATION FAILURE "
+            f"(broken API key, 4xx/quota, or blocked), not an empty result. "
+            f"Failing the run so it is visible. Check the scraper backend."
+        )
 
     # Step 4 — deduplicate
     fresh = store.filter_new(all_candidates)
