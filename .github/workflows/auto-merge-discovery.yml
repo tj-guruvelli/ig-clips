@@ -1,0 +1,47 @@
+name: Auto-merge discovery branches to main
+
+# The cloud routine ("IG clips routine") commits its discovery output to a
+# per-run branch (claude/**). Discovery is collection-only and fully deduped,
+# so it needs no human review. This lands those branches on main automatically,
+# but ONLY when nothing outside data/ changed (safety gate). Anything touching
+# code/config/workflows is skipped and left for a human.
+
+on:
+  push:
+    branches:
+      - "claude/**"
+
+permissions:
+  contents: write
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Merge data-only discovery branch into main
+        env:
+          BR: ${{ github.ref_name }}
+        run: |
+          set -e
+          git config user.name "ig-clips-automerge[bot]"
+          git config user.email "automerge@users.noreply.github.com"
+          git fetch origin "$BR"
+          NONDATA=$(git diff --name-only origin/main "origin/$BR" | grep -vE '^data/' || true)
+          if [ -n "$NONDATA" ]; then
+            echo "::warning::$BR changed files outside data/ - skipping auto-merge (needs review):"
+            echo "$NONDATA"
+            exit 0
+          fi
+          if git merge --no-ff --no-edit "origin/$BR"; then
+            git push origin main
+            git push origin --delete "$BR" || true
+            echo "Merged $BR into main; deleted branch."
+          else
+            echo "::error::Merge conflict on $BR (likely concurrent runs) - needs a manual union-merge."
+            git merge --abort || true
+            exit 1
+          fi
