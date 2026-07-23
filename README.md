@@ -1,79 +1,55 @@
-# IG Clips - Daily AI Clip Discovery Engine
+# IG Clips — Daily Viral AI Clip Discovery
 
-Finds viral AI podcast/interview clips on Instagram and X every day.
-Deduplicates across runs so nothing is ever surfaced twice.
-Outputs a CSV report with 3 hook variations per clip.
+Finds viral (**1M+ view**) AI podcast/interview clips on Instagram and keeps a rolling backlog of ready-to-pick candidates for the **@theaiaxon** account. Deduplicates across runs so nothing is surfaced twice.
 
 ---
 
-## How it works
+## Architecture (current — updated 2026-07-22)
 
-1. **Audits @brainsbyai** first - registers already-posted clips so they're never flagged
-2. **Searches Instagram + X** using the full keyword framework (Tier 1–3 speakers, topics, industry disruptions, viral moments, source platforms)
-3. **Qualifies each clip** - format, duration (30–90s), date (last 12 months), content pillar, spoken AI relevance
-4. **Deduplicates** against `data/found_clips.json` - any URL ever found is permanently excluded from future runs
-5. **Generates 3 hook options** per clip via Claude API
-6. **Outputs** a dated CSV to `output/clips_YYYY-MM-DD.csv`
+**Primary: a claude.ai cloud routine** ("IG clips routine", daily ~5 AM CDT). A scheduled Claude agent that:
+1. Scrapes competitor theme-pages via the **Apify** connector (`apify/instagram-reel-scraper`) — returns reels with real `videoPlayCount` / duration / caption.
+2. Filters to ≥1,000,000 plays + the qualifying rules below, dedups vs `data/found_clips.json` + `data/backlog.json`.
+3. Maintains a pool of up to **100** candidates in `data/backlog.json`; alerts at 90.
+4. Commits + pushes `data/` back to this repo (a fresh clone loses everything otherwise).
+
+It uses **MCP connectors** (Apify, Metricool, Composio) — **no API keys are stored in this repo**.
+
+**Legacy: GitHub Actions** (`.github/workflows/daily.yml`) — **DISABLED 2026-07-22**. It ran the local Python engine (Firecrawl web-search + Playwright IG login), which returned **0 clips** for months: Firecrawl 400'd every query and web-search has no IG view counts. Superseded by the cloud routine + Apify.
+
+**Local fallback: `src/main.py`** — the Python engine. Firecrawl request updated to the v2 API and kept as a general-web scraper. Now **fails loud** (non-zero exit) if no scrape backend is configured or a full sweep returns 0 raw candidates, so a broken integration goes RED instead of a silent empty "success".
 
 ---
 
-## Setup
+## Accounts
 
-### Local
+- **@theaiaxon** — the posting target (fresh account, growth 0→10k). Dedup is against *its* posted history.
+- **@theaibolt** — source catalog + speaker-saturation signal (its ~143 posts are proven picks to resurface).
+- `@brainsbyai` was the original name for this project; retired — do not use.
+
+## Data files
+
+- `data/found_clips.json` — dedup store: `found_urls` (everything ever surfaced) + `posted_urls` (@theaibolt history) + `clips_log` (surfaced 1M+ clips).
+- `data/backlog.json` — the maintained pool of ready-to-pick candidates + status.
+- `data/DISCOVERY-LOG.md` — dated run reports.
+
+## Qualifying criteria
+
+1M+ views (hard gate) · real person speaking (interview/podcast/keynote — exclude AI-generated video, memes, faceless voiceover) · genuinely about AI in the spoken words · not already posted · prefer 30–90s · prefer last 12 months.
+
+---
+
+## Keys & secrets
+
+The cloud routine needs **no keys in this repo** — it authenticates through the attached MCP connectors.
+
+If you re-enable the GitHub Actions path, store keys as **encrypted Secrets** (Settings → Secrets and variables → Actions → **Secrets** tab) — **never as plaintext Variables**. Actions *Variables* are unencrypted and printed in logs; API keys placed there are exposed. (Any keys currently sitting in the *Variables* tab should be deleted and rotated.)
+
+## Local run
 
 ```bash
 pip install -r requirements.txt
-playwright install chromium
-
-cp .env.example .env
-# Fill in your credentials in .env
-
-cd src
-python main.py
+# put FIRECRAWL_API_KEY (or APIFY_API_KEY), optional IG creds, in .env
+cd src && python main.py
 ```
 
-### GitHub Actions (automated daily)
-
-1. Push this repo to GitHub
-2. Go to **Settings → Secrets and variables → Actions** and add:
-   - `INSTAGRAM_USERNAME`
-   - `INSTAGRAM_PASSWORD`
-   - `FIRECRAWL_API_KEY`
-   - `ANTHROPIC_API_KEY`
-   - `COMPOSIO_API_KEY`
-   - `METRICOOL_API_KEY`
-   - `APIFY_API_KEY`
-3. The workflow runs daily at **8:00 AM UTC** automatically
-4. Download the CSV from the **Actions → Artifacts** tab after each run
-
----
-
-## Deduplication
-
-`data/found_clips.json` is committed back to the repo after every run.
-This is the single source of truth - if a URL is in this file, it will never appear again.
-
----
-
-## Output format (CSV columns)
-
-| Column | Description |
-|---|---|
-| clip_number | Sequential number for the run |
-| platform | instagram / x |
-| url | Direct link to the clip |
-| views | View count at time of discovery |
-| date_posted | When the clip was posted |
-| speaker | Speaker name extracted |
-| topic | What the speaker talks about |
-| duration_sec | Clip length in seconds |
-| content_pillars | Educational / Inspirational / Emotional / Controversial |
-| original_source | Podcast or event name |
-| full_episode_link | YouTube or Spotify link |
-| interview_date | When the original interview was recorded |
-| credits_handle | @handle to credit in caption |
-| already_on_brainsbyai | Yes / No |
-| already_on_competitor | Yes / No |
-| hook_1 / hook_2 / hook_3 | Three hook variations |
-| low_views_flag | ⚠️ if under 500k views |
-| pillar_unverified | ⚠️ if content pillar could not be confirmed |
+Fails fast if no scrape backend is set, and fails loud if a full search sweep finds 0 candidates (broken/blocked integration, not an empty result).
