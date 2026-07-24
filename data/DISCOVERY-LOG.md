@@ -86,3 +86,50 @@ Pillar mix this batch skewed heavily Controversial (7 of 9) since safety/warning
 
 ### Apify quota status
 No quota, auth, or billing errors encountered across any of the actor runs this session (`apify/instagram-reel-scraper`, `data-slayer/instagram-search-reels`, `api-ninja/x-twitter-advanced-search`). All runs SUCCEEDED.
+
+## 2026-07-23 — X/Twitter search top-up (+9 net-new, union-deduped by shortcode)
+
+**Backlog status at run start:** 25/100 available (post 2026-07-22 batch), well short of the 90-alert threshold.
+
+**Discovery:** continued X/Twitter search via `api-ninja/x-twitter-advanced-search`, focused on Anthropic/DeepMind-adjacent speakers not yet in the backlog (Dario Amodei, Demis Hassabis, Andrej Karpathy) plus a non-CEO finance voice (Krishna Rao) and a contrarian media voice (Ed Zitron).
+
+**Result:** +9 clean additions, all promoted directly to `available` (no review-tier flags this batch). Backlog now **34/100 available** (was 25). Still well short of 90 — no BACKLOG NEAR CAP alert warranted.
+
+### New additions (available)
+
+| Speaker | Views | Field | Source | Pillar | URL |
+|---|---|---|---|---|---|
+| Dario Amodei | 3,487,899 | AI (Anthropic CEO) | Congressional/lawmaker testimony (UNCONFIRMED exact hearing) | Controversial | https://x.com/coinbureau/status/2071330294452666695 |
+| Krishna Rao | 3,225,977 | Finance (Anthropic CFO) | Patrick O'Shaughnessy's podcast (confirmed) | Educational | https://x.com/patrick_oshag/status/2054532117410054252 |
+| Andrej Karpathy | 3,189,981 | AI research (ex-Tesla/OpenAI, now Anthropic) | UNCONFIRMED - interview name not given | Educational | https://x.com/rewind02/status/2056850947947827403 |
+| Ed Zitron | 1,980,561 | Tech media / AI critic | CNBC (confirmed from caption) | Controversial | https://x.com/edzitron/status/2072703921768837195 |
+| Dario Amodei | 2,409,121 | AI (Anthropic CEO) | UNCONFIRMED - 3-hour podcast, name not given | Educational | https://x.com/shmidtqq/status/2067724728110854456 |
+| Dario Amodei | 1,380,680 | AI (Anthropic CEO) | The Economist (confirmed via web search) | Emotional | https://x.com/r0ck3t23/status/2027698383037591957 |
+| Dario Amodei | 1,368,545 | AI (Anthropic CEO) | Bloomberg interview (confirmed from caption) | Emotional | https://x.com/dubeyamitabh/status/2067619253600321574 |
+| Dario Amodei | 1,251,951 | AI (Anthropic CEO) | Widely-quoted Amodei statement - exact original interview UNCONFIRMED | Controversial | https://x.com/JesseCohenInv/status/2019051610207383745 |
+| Demis Hassabis | 1,284,747 | AI research (Google DeepMind CEO, Nobel laureate) | UNCONFIRMED - interview name not given | Educational | https://x.com/Ric_RTP/status/2065430321550467149 |
+
+Dario Amodei now has 5 clips in this single batch alone — heavy saturation, space postings out aggressively when scheduling; do not source further Dario clips until several of these are posted.
+
+### Hooks for top 3 new additions
+
+**Dario Amodei — open source AI 'very dangerous path' warning to lawmakers (3.5M views)**
+1. Dario Amodei warned lawmakers about a danger nobody can undo.
+2. Dario Amodei said one AI decision cannot be taken back. Ever.
+3. Dario Amodei told Congress the real risk isn't the AI itself.
+
+**Krishna Rao — Anthropic's revenue growth story (3.2M views)**
+1. Krishna Rao joined Anthropic before anyone believed the number.
+2. Krishna Rao watched a company grow past reason in months.
+3. Krishna Rao helped raise billions nobody thought were coming.
+
+**Andrej Karpathy — most people aren't really using AI (3.2M views)**
+1. Andrej Karpathy says your ChatGPT subscription is wasted.
+2. Andrej Karpathy found the real gap. It isn't access.
+3. Andrej Karpathy says paying for AI isn't the same as using it.
+
+### UNCONFIRMED source flags
+Four of the nine new clips carry UNCONFIRMED source attribution (original interview name not captured in the repost caption): the Karpathy clip, one of the five Dario clips (3-hour podcast), the Dario Congressional-testimony clip (exact hearing unconfirmed), and the Demis Hassabis clip. Views and speaker identity are verified; only the original episode/podcast name is unconfirmed. Do not fabricate a source name when captioning these — credit the repost handle only until confirmed.
+
+### Apify quota status
+No quota, auth, or billing errors encountered this run (`api-ninja/x-twitter-advanced-search`). All runs SUCCEEDED.
