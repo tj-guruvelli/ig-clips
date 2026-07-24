@@ -233,3 +233,68 @@ Pillar mix this batch again skewed Controversial (13 of 21 available adds) with 
 
 ### Apify quota status
 No quota, auth, or billing errors encountered across any of the actor runs this session (`apify/instagram-reel-scraper`, `apidojo/tweet-scraper`, `data-slayer/instagram-search-reels`). All runs SUCCEEDED; the only failures were per-account resolution issues (private/renamed handles), not platform-wide limits.
+
+## 2026-07-24 — Run #4: dedup + 4-lane discovery (+10 available, +1 review, 0 pruned)
+
+**@theaibolt refresh:** `apify/instagram-reel-scraper` sweep (200-limit, 143/142 items returned) — zero new posts vs the known 143-URL posted history. No pruning needed.
+
+**@theaiaxon dedup (STEP 1b):** Apify published-reels scrape (100-limit) still returns exactly 1 published reel — Sam Altman / Tucker Carlson teen-safety clip, already tracked in `theaiaxon_published_exclusions`. Metricool `getScheduledPosts` (brandId 6566296, 2026-06-24 to 2026-08-23, America/Chicago) returned 0 scheduled posts. Both checks succeeded with no errors — dedup is clean and complete this run.
+
+**Backlog before this run:** 49/100 available, 7 review. Below the 100 target, so discovery ran.
+
+**Discovery — 4 parallel subagent lanes:**
+1. X-search, Tier 2/3 AI researchers/execs (Gary Marcus, Stuart Russell, Kai-Fu Lee, Fei-Fei Li, Timnit Gebru, Eliezer Yudkowsky, Jan Leike, Jared Kaplan, Chris Olah, Emad Mostaque, Percy Liang, Arthur Mensch, Clement Delangue, Aidan Gomez, Noam Shazeer, Reid Hoffman, Vinod Khosla, Satya Nadella, Sundar Pichai, Sam Altman non-Tucker-Carlson topics) — **5 qualifiers**: 3 fresh Sam Altman topics + Stuart Russell + Connor Leahy. Everyone else on the list came back empty.
+2. X-search, cross-industry non-tech AI voices (entertainment, sports, comedy, medicine/law, world leaders, non-AI-native CEOs) — **1 qualifier**: Alexandria Ocasio-Cortez. Mark Cuban had 2 tweets over 1M views but no attached video (text/link cards) — excluded on the FORMAT gate, not silently dropped.
+3. Instagram mega-podcast recency check (13 accounts, posts newer than 2026-07-14) — **0 qualifiers**. Confirms the 2026-07-09 exhaustion finding still holds. Found and corrected 3 renamed/broken handles: `@tferriss`→`@timferriss`, `@modernwisdompodcast`→`@chriswillx`, `@nikhilkamathofficial`→`@nikhilkamathcio` (all checked, all empty). `@20vc` remains unresolvable after 5 handle variants tried.
+4. X-search, finance/entertainment figures (Raoul Pal, Cathie Wood, Ray Dalio, Chamath Palihapitiya, Jamie Dimon, Larry Fink, Michael Burry, Jim Cramer, Warren Buffett, Arnold Schwarzenegger, Snoop Dogg, MrBeast, Oprah Winfrey) — **5 results** (4 qualifiers + 1 review): Cathie Wood, Ray Dalio, Jamie Dimon, Larry Fink qualified; Snoop Dogg flagged to review (views right at the 1,001,550 floor and AI voice-cloning is a secondary angle within a broader Drake/Kendrick-beef story). Michael Burry's AI-bubble clips were all narrator/text-card videos, not him on camera — excluded on FORMAT, not silently dropped.
+
+**Net result:** +10 available, +1 review, 0 pruned. **Available now 59/100** (was 49), review 8.
+
+Pillar mix this batch: Controversial 5 (Cathie Wood, Larry Fink, AOC, Connor Leahy, +Snoop Dogg in review), Educational 3 (Stuart Russell, Ray Dalio, Sam Altman/competitive-coding), Inspirational 2 (Sam Altman/no-equity, Jamie Dimon), Emotional 1 (Sam Altman/GPT-5 reaction). Still Controversial-heavy overall across the full backlog; keep prioritizing Educational/Inspirational sourcing in future runs.
+
+### New additions this run
+
+| Speaker | Views | Dur | Date | Topic | URL |
+|---|---|---|---|---|---|
+| Sam Altman | 29,275,565 | ? | 2024-12-17 | No equity in OpenAI, does it for love | https://x.com/teslaownersSV/status/1868894670476239164 |
+| Sam Altman | 5,664,615 | ? | 2025-07-23 | First reaction testing GPT-5 | https://x.com/ChrisGPT/status/1948096257483763798 |
+| Cathie Wood | 7,040,744 | 43s | 2025-08-03 | Tesla as largest AI project, $8-10T robotaxi thesis | https://x.com/niccruzpatane/status/1951831193596404160 |
+| Stuart Russell | 3,306,002 | ? | 2024-07-31 | AI is a black box, no nuclear-style safety guarantees | https://x.com/ControlAI/status/1818748081589846023 |
+| Ray Dalio | 3,005,360 | 2516s (full ep) | 2025-02-21 | AI's economic impact, debt crisis | https://x.com/TuckerCarlson/status/1893045548459954510 |
+| Larry Fink | 2,778,942 | 84s | 2026-05-25 | AI data centers funded by pensions/savings | https://x.com/ShadowofEzra/status/2058718603633918343 |
+| AOC | 1,972,067 | 47s | 2026-05-21 | Contaminated water near a Meta AI data center | https://x.com/krassenstein/status/2057533802495549789 |
+| Jamie Dimon | 2,132,369 | 16s | 2026-05-16 | AI enables 3.5-day work weeks, longer lifespans | https://x.com/MarioNawfal/status/2055652992460697812 |
+| Sam Altman | 1,399,517 | ? | 2025-02-08 | Internal model ranked 50th-best competitive programmer | https://x.com/tsarnick/status/1888111042301211084 |
+| Connor Leahy | 1,106,441 | ? | 2023-05-02 | AI extinction risk, on Amanpour & Co | https://x.com/amanpour/status/1653452034463367168 |
+
+### Flagged to review (not promoted — need manual confirmation)
+
+| Speaker | Views | Reason | URL |
+|---|---|---|---|
+| Snoop Dogg | 1,001,550 | Views right at the 1M floor; AI voice-cloning is a secondary angle inside a broader Drake/Kendrick-beef story, not the central topic | https://x.com/itsavibe/status/1796268440136593603 |
+
+### Dropped as non-qualifying (found but not added)
+
+- Mark Cuban, 2 tweets (1.12M and 932K views) on AI disrupting small business — no attached video, link/text cards only, fails the FORMAT hard gate.
+- Michael Burry, several 1M+ view AI-bubble tweets — all narrator/graphics-over-stock-footage videos, not Burry speaking on camera, fails FORMAT.
+- Chamath Palihapitiya, Joe Rogan repost on AI — only 143,546 views, below the 1M gate.
+
+### Hooks for top 3 new additions
+
+**Sam Altman — no equity in OpenAI (29.3M views)**
+1. Sam Altman just admitted he owns zero OpenAI stock.
+2. Sam Altman does not own a single share of OpenAI.
+3. Sam Altman gave up equity most people would kill for.
+
+**Sam Altman — first reaction testing GPT-5 (5.7M views)**
+1. Sam Altman tested GPT-5 himself. It stunned even him.
+2. Sam Altman asked GPT-5 his hardest question. It just knew.
+3. Sam Altman built GPT-5. It still caught him off guard.
+
+**Cathie Wood — Tesla as the largest AI project (7.0M views)**
+1. Cathie Wood says Tesla is not a car company anymore.
+2. Cathie Wood puts a ten trillion dollar number on this.
+3. Cathie Wood thinks robotaxis change everything. Here is her math.
+
+### Apify quota status
+No quota, auth, or billing errors encountered across any of the 4 subagent lanes or the theaibolt/theaiaxon dedup sweeps (`apify/instagram-reel-scraper`, `apidojo/tweet-scraper`, `apify/rag-web-browser`). All runs SUCCEEDED; the only failures were per-account handle resolution issues (renamed/private/unresolvable accounts), not platform-wide limits.
