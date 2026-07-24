@@ -133,3 +133,35 @@ Four of the nine new clips carry UNCONFIRMED source attribution (original interv
 
 ### Apify quota status
 No quota, auth, or billing errors encountered this run (`api-ninja/x-twitter-advanced-search`). All runs SUCCEEDED.
+
+## 2026-07-24 — theaiaxon dedup goes live (STEP 1b); discovery comes up dry
+
+**Backlog status at run start:** 28/100 available, 6 review. Well short of the 90-alert threshold.
+
+**@theaibolt resweep:** `apify/instagram-reel-scraper` {"username":["theaibolt"],"resultsLimit":200} returned 143/143 items, byte-for-byte the same shortcode set as the last sweep. Zero new posts, zero pruning needed.
+
+**@theaiaxon dedup (STEP 1b) — run for the first time with live data:**
+- `apify/instagram-reel-scraper` on @theaiaxon returned exactly **1 published reel**: a Sam Altman / Tucker Carlson Show clip about whether ChatGPT can tell a curious teen from a kid in crisis (posted 2026-07-23, shortcode `DbJvmxvPYPD`).
+- `getScheduledPosts` (Metricool brandId 6566296, America/Chicago, 2026-06-24→2026-08-23) returned **0 scheduled posts**.
+- Neither call errored — dedup this run is CLEAN, not a fallback state.
+- The Sam Altman/Tucker Carlson/ChatGPT-child-safety speaker+topic combo did not match any existing backlog candidate or clips_log entry, so nothing was pruned. It's now recorded in `data/backlog.json` under `theaiaxon_published_exclusions` so it's never resourced from a different repost URL in a future run.
+
+**Discovery (available < 100, topped up attempt):** widened the net into speakers and fields not covered by prior sweeps:
+- X/Twitter (`api-ninja/x-twitter-advanced-search`, Top results, viral engagement filter, video media): Ilya Sutskever, Yann LeCun, Bill Gates, Peter Thiel, "doctor AI diagnosis interview", "lawyer AI replace interview".
+- Instagram (`data-slayer/instagram-search-reels`): Andrew Ng, musician AI, economist AI jobs, Fei-Fei Li, athlete AI training.
+
+**Result: zero net-new qualifying clips.** All 11 actor runs SUCCEEDED (no quota/auth errors — this is a clean empty result, not a quota block). Every candidate reviewed failed at least one hard gate:
+- Under the 1M-view line (most Fei-Fei Li, Andrew Ng, and athlete-AI results topped out in the tens or hundreds of thousands).
+- No actual video attached — several of the highest "views" numbers on X (e.g. a 1.99M-view Marc Andreessen/Rogan thread by @cyrilXBT) turned out to be text/quote-tweet commentary summarizing an interview, not the interview clip itself.
+- Format/spoken-words failures — e.g. a 2.19M-view UBI explainer (@artificialintelligenceee) has no on-camera named speaker, just narration over stock footage.
+- Closest near-miss: an Andrew Ng bio-explainer reel at 984K views (@rabbitt.learning) — just under the gate, and it's a narrated biography montage rather than him speaking directly.
+
+This confirms the account/speaker exhaustion pattern flagged 2026-07-09 and 2026-07-22 now extends to this wider set of untried Tier 2/3 names and cross-industry fields (medicine, law, music, economics, sports). Backlog remains **28/100 available** — unchanged from run start. No BACKLOG NEAR CAP alert warranted.
+
+### Recommendation for future runs
+1. Priority-1 lever still untried: mining the full source interview behind each of theaibolt's 143 posts for other 1M+ moments from the same episodes.
+2. Per the 2026-07-09 STATUS note, consider surfacing the existing 500K-1M "review"-bucket clips for a user decision on relaxing the 1M gate — do not relax it silently.
+3. @theaiaxon's own posting cadence (1 post/day-ish) means STEP 1b dedup should stay cheap going forward; no issues with the new step.
+
+### Apify quota status
+No quota, auth, or billing errors encountered this run (`apify/instagram-reel-scraper` x2, `getScheduledPosts` x1, `api-ninja/x-twitter-advanced-search` x6, `data-slayer/instagram-search-reels` x5). All 13 calls SUCCEEDED.

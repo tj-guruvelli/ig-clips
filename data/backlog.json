@@ -2,10 +2,10 @@
   "target": 100,
   "threshold_views": 1000000,
   "criteria": "1M+ views (plays or views); a REAL person in an interview/podcast/keynote/conference talking about AI (its value, risks, disruption, or their own adoption) in ANY industry \u2014 the speaker need NOT be an AI or tech figure, any well-known speaker in any field counts; NOT already posted on @theaibolt (dedup by speaker+topic vs full history); duration preferred 30-90s but longer viral clips OK (cut at edit); recent preferred but evergreen older 1M+ clips accepted (age flagged). EXCLUDE AI-generated/CGI video, memes, faceless voiceover, text-overlay news, no-speaker demos.",
-  "last_updated": "2026-07-22",
-  "available_count": 34,
+  "last_updated": "2026-07-24",
+  "available_count": 28,
   "review_count": 6,
-  "status": "2026-07-22: @theaibolt posted_urls sweep (200-limit, 142 items) found ZERO new posts vs prior sweep (143/143 URLs unchanged) - no pruning needed. Today's 22 pre-seeded clips (airesearches/evolving.ai/thewizeai/theaipage) were reviewed and REJECTED wholesale: all are AI-generated/CGI video with no real speaker (speaker field empty on every one), failing the hard FORMAT gate - do not promote them in future runs either. Ran the two untried levers from 2026-07-09 status: (a) X/Twitter search via api-ninja/x-twitter-advanced-search - worked, 4 candidates; (b) direct speaker-name + cross-industry IG keyword search via data-slayer/instagram-search-reels - worked, 11 candidates across Tier2/3 researchers and cross-industry figures. Net: +9 available (Palmer Luckey x2, Tristan Harris, Geoffrey Hinton 60-Minutes, Daniel Kokotajlo, Mo Gawdat x2, Ben Affleck, Jensen Huang), +5 review (short-duration or unconfirmed-source clips), +1 view-count refresh (Grantham). Pillar mix this batch skewed Controversial (safety/warning stories were the highest-yield); future runs should target more Educational/Inspirational sourcing to rebalance. Still far from 90/100 threshold - IG keyword search on individual speakers mostly yields sub-1M aggregator reposts; X/Twitter search is the most promising underused lever going forward, worth deeper investment (more query variations, engagement-metric tuning) in future runs. Priority-1 lever (mining full source interviews behind all 143 theaibolt posts) NOT attempted this run - scope too large for one session, flagged as a candidate for a dedicated future run.",
+  "status": "2026-07-24: @theaibolt full-history resweep (200-limit, 143/143 items) found ZERO new posts vs prior sweep - no pruning needed. @theaiaxon dedup (STEP 1b) run for the first time with real data: Apify scrape of @theaiaxon's own published reels returned exactly 1 post (fresh account) - Sam Altman/Tucker Carlson Show clip on ChatGPT child-safety guardrails, posted 2026-07-23, shortcode DbJvmxvPYPD. Metricool getScheduledPosts (brandId 6566296, America/Chicago, 30d back/fwd) returned zero scheduled posts. Neither matched any backlog candidate or clips_log entry by speaker+topic, so no backlog items were pruned; the Sam Altman/Tucker Carlson/ChatGPT-child-safety topic is now recorded below as an exclusion so it is never resourced. Dedup this run: CLEAN (both @theaiaxon calls succeeded, no errors). Discovery: ran 6 X/Twitter searches (api-ninja/x-twitter-advanced-search: Ilya Sutskever, Yann LeCun, Bill Gates, Peter Thiel, doctor AI diagnosis, lawyer AI replace) and 5 Instagram keyword searches (data-slayer/instagram-search-reels: Andrew Ng, musician AI, economist AI jobs, Fei-Fei Li, athlete AI) covering untried Tier 2/3 speakers and untried cross-industry fields (medicine, law, music, economics, sports). All 11 actor runs SUCCEEDED (no quota/auth errors) but yielded ZERO net-new qualifying clips: every result was either under the 1M-view gate, lacked an actual video attachment (text/quote-tweet commentary about an interview rather than the interview clip itself, e.g. the 1.99M-view Marc Andreessen/Rogan thread), or was off-topic. Closest near-misses: Andrew Ng bio explainer at 984K views (just under gate, and format is narrated bio-reel not a direct interview clip); economist AI-jobs explainer at 2.19M views (narrator/no on-camera named speaker, fails spoken-words+format test). This confirms the 2026-07-09/07-22 account-and-speaker exhaustion finding now extends to this wider net of untried names and industries. Available remains at 28/100, well short of the 90-alert threshold. Recommend for a future run: (a) the still-untried Priority-1 lever of mining full source interviews behind theaibolt's 143 posts, (b) reviewing the 500K-1M 'review'-bucket clips already in the pool per the 2026-07-09 STATUS note before further relaxing the 1M gate (ask user first, never silently relax).",
   "candidates": [
     {
       "url": "https://www.instagram.com/p/DZ_-Ea2ggkY/",
@@ -519,6 +519,16 @@
     }
   ],
   "saturation_note": "Backlog candidate saturation (not theaibolt): Hinton 4 clips (DOAC, CNN, Nobel, 60 Minutes) - space postings out; Mo Gawdat 3 clips (30% jobs, emergency episode, short-term dystopia) - heavy, deprioritize further Gawdat sourcing; Palmer Luckey 2 clips; Elon Musk 2 available + 2 review, already saturated on theaibolt (12 posts) - raise the bar further; Bengio 1 posted. Jensen Huang 1 clip but theaibolt-saturated (15 posts) - raise the bar.",
+  "theaiaxon_published_exclusions": [
+    {
+      "url": "https://www.instagram.com/p/DbJvmxvPYPD/",
+      "speaker": "Sam Altman / Tucker Carlson",
+      "topic": "Tucker Carlson presses Sam Altman on whether ChatGPT can tell the difference between a curious teen and a kid in crisis",
+      "source": "Tucker Carlson Show",
+      "posted_on_theaiaxon": "2026-07-23",
+      "note": "@theaiaxon's first published reel. Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost."
+    }
+  ],
   "alert_threshold": 90,
   "posting_target": "@theaiaxon (Metricool brand 6566296) - FRESH account, fastest-growth strategy: post already-proven 1M+ viral reels first",
   "source_priority": [
