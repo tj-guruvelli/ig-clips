@@ -86,3 +86,71 @@ Pillar mix this batch skewed heavily Controversial (7 of 9) since safety/warning
 
 ### Apify quota status
 No quota, auth, or billing errors encountered across any of the actor runs this session (`apify/instagram-reel-scraper`, `data-slayer/instagram-search-reels`, `api-ninja/x-twitter-advanced-search`). All runs SUCCEEDED.
+
+## 2026-07-24 — Daily discovery run (3 parallel lanes: X search, IG cross-industry, mega-podcast recency)
+
+**@theaibolt refresh:** Apify `apify/instagram-reel-scraper` sweep (200-result limit, 142/143 items returned) found **zero new posts** since the last sweep, identical to the 2026-07-22 sweep. No pruning needed.
+
+**@theaiaxon dedup (STEP 1b, the never-repost loop):** scraped @theaiaxon's own published reels (`apify/instagram-reel-scraper`, 1 result — the account has posted exactly once so far: Sam Altman / Tucker Carlson Show on ChatGPT child safety, not a match to anything in the backlog) and pulled Metricool scheduled posts for brand 6566296 across a 60-day window (0 scheduled, call succeeded with no errors). Dedup is fully clean this run — no matches, nothing pruned, no errors on either source.
+
+**Data-quality correction:** the stored `available_count` field said 34, but only 28 of the 34 existing candidates actually carried `status: "available"` (6 were `status: "review"`). Recounted directly from the candidates array; this field will be kept accurate going forward.
+
+**Discovery (28 available, well short of 100 — topped up):** ran 3 parallel subagent lanes —
+1. X/Twitter search (`apidojo/tweet-scraper`) across Tier 2/3 AI researchers, contrarians, and cross-industry queries — strong yield on named AI figures, weak/noisy on cross-industry non-tech terms.
+2. Instagram cross-industry keyword search (`data-slayer/instagram-search-reels`) targeting doctors, lawyers, athletes, chefs, teachers, farmers, clergy, and Hollywood figures discussing AI.
+3. Mega-podcast recency check (14 accounts: Rogan, DOAC, Lex Fridman, All-In, Shetty, Impact Theory, Howes, Ferriss, Vaynerchuk, Huberman, Modern Wisdom, 20VC, Diamandis, Mostly Human) — only checking posts newer than the 2026-07-09 exhaustion date, per standing guidance not to re-sweep exhausted lists.
+
+**Result:** +21 clean additions to `available`, +1 flagged to `review` (Tom Holland — 37.7M views but only 7s, borderline format). No Apify quota/auth errors on any of the 3 lanes — `@tferriss`, `@modernwisdompodcast`, and `@20vc` failed to resolve (private/wrong handle), which is a per-account data issue, not a quota block.
+
+Backlog now **49/100 available** (was 28), **7 review** (was 6). Genuine cross-industry (non-tech, non-CEO) 1M+ content remains scarce on both platforms — confirmed independently by 2 of the 3 subagents, not a tooling gap. Still well short of the 90-alert threshold.
+
+### New additions (available) — top 10 by views
+
+| Speaker | Views | Field | Source | Pillar | URL |
+|---|---|---|---|---|---|
+| Ray Kurzweil | 36,194,164 | Futurist | Joe Rogan Experience | Controversial | https://x.com/KanekoaTheGreat/status/1767631628917248346 |
+| Roman Yampolskiy | 30,192,813 | AI safety research | Lex Fridman Podcast | Controversial | https://x.com/lexfridman/status/1797383905034514684 |
+| Pope Leo XIV | 4,815,121 | Religion | Vatican News | Educational | https://www.instagram.com/reel/DJeUf3Utxyo/ |
+| Mustafa Suleyman | 7,456,038 | AI/Tech (Microsoft AI) | Financial Times | Controversial | https://x.com/FT/status/2021913057065160828 |
+| Ray Kurzweil | 8,274,721 | Futurist | Joe Rogan Experience | Controversial | https://x.com/TheChiefNerd/status/1767712511581643244 |
+| Bill Gates | 3,769,484 | Tech/Philanthropy | Unconfirmed | Controversial | https://x.com/EndWokeness/status/1840738265839685868 |
+| Ilya Sutskever | 3,094,692 | AI research (SSI) | Univ. of Toronto convocation | Educational | https://x.com/Yuchenj_UW/status/1931883302623084719 |
+| Peter Thiel | 3,338,850 | Venture Capital | Unconfirmed | Controversial | https://x.com/jawwwn_/status/2026688379207753995 |
+| Bill Gates | 3,006,175 | Tech/Philanthropy | Tonight Show (NBC) | Controversial | https://x.com/redpillb0t/status/2040397754476999075 |
+| Fran Drescher | 2,848,457 | Acting/SAG-AFTRA | NBC LA | Controversial | https://www.instagram.com/reel/DPP1sDeCbRz/ |
+
+Pillar mix this batch again skewed Controversial (13 of 21 available adds) with Educational 6, Inspirational 2, Emotional 0 — future sourcing should keep targeting Educational/Inspirational picks to rebalance toward the page's target mix.
+
+### Flagged to review (not promoted — need manual confirmation)
+
+| Speaker | Views | Reason | URL |
+|---|---|---|---|
+| Tom Holland | 37,699,926 | Only 7s (quip, not a full segment); credited via a repost account, not the original publisher | https://www.instagram.com/reel/DZp6OfjM-YV/ |
+
+### Dropped as non-qualifying (found but not added)
+
+- Dario Amodei, WEF panel clip, 1.2M views — already 5 clips deep in the backlog for this speaker, weak differentiation, lowest view count of the batch.
+- Bill Gates, 3rd clip found this run (storiesuntoldour repost) — near-duplicate topic of the Tonight Show clip above, dropped to avoid tripling this speaker.
+- Jeremy Greene reaction video, 10.3M views — not a mainstream public figure, format is a reaction clip rather than an interview.
+- Jessica Reid classroom-AI-tools clip, 2.9M views — listicle/tutorial format, explicitly excluded by the FORMAT criterion.
+- Unconfirmed-speaker clip via @artificialintelligenceee (Honestly podcast jailbreak segment), 1.6M views — could not confirm who is speaking.
+
+### Hooks for top 3 new additions
+
+**Ray Kurzweil — AGI by 2029 on Joe Rogan (36.2M views)**
+1. Ray Kurzweil made this AI prediction in 1999. It is still on track.
+2. Ray Kurzweil named the year machines catch up to us.
+3. Ray Kurzweil has one AI date circled. Joe Rogan pushed back hard.
+
+**Roman Yampolskiy — 99.9999% AGI risk on Lex Fridman (30.2M views)**
+1. Roman Yampolskiy put a number on how AI ends us.
+2. Roman Yampolskiy gave Lex Fridman a number nobody wants to hear.
+3. Roman Yampolskiy is almost certain about one AI outcome. Almost.
+
+**Pope Leo XIV — AI and the industrial revolution (4.8M views)**
+1. Pope Leo XIV picked his name because of AI.
+2. Pope Leo XIV compared AI to a crisis from 1891.
+3. Pope Leo XIV chose his name to answer a machine.
+
+### Apify quota status
+No quota, auth, or billing errors encountered across any of the actor runs this session (`apify/instagram-reel-scraper`, `apidojo/tweet-scraper`, `data-slayer/instagram-search-reels`). All runs SUCCEEDED; the only failures were per-account resolution issues (private/renamed handles), not platform-wide limits.
