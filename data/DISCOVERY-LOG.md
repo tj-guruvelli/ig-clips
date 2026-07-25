@@ -298,3 +298,56 @@ Pillar mix this batch: Controversial 5 (Cathie Wood, Larry Fink, AOC, Connor Lea
 
 ### Apify quota status
 No quota, auth, or billing errors encountered across any of the 4 subagent lanes or the theaibolt/theaiaxon dedup sweeps (`apify/instagram-reel-scraper`, `apidojo/tweet-scraper`, `apify/rag-web-browser`). All runs SUCCEEDED; the only failures were per-account handle resolution issues (renamed/private/unresolvable accounts), not platform-wide limits.
+
+## 2026-07-25 — Daily discovery run (X/Twitter, 4-lane parallel)
+
+**@theaibolt refresh:** Apify `apify/instagram-reel-scraper` full sweep (200-result limit, 143/143 items returned) found **zero new posts** since the last sweep — posted_urls list unchanged, no pruning needed.
+
+**@theaiaxon dedup (STEP 1b):** Apify published-reels scrape now returns 2 published items (was 1). The Sam Altman / Tucker Carlson post was already tracked. A NEW post surfaced: Joe Rogan / Duncan Trussell discussing the "Ghost Murmur" alleged CIA AI+quantum-magnetometry heartbeat surveillance claim (Joe Rogan Experience #2481, published 2026-07-24). Metricool `getScheduledPosts` (brandId 6566296, -30/+30 day window, America/Chicago) returned 1 item — an Elon Musk / Dwarkesh Patel post using the HAL 9000 "it didn't malfunction, it optimised" analogy for AI safety — but its status was already `PUBLISHED`, not future-scheduled (live at https://www.instagram.com/reel/DbL8iQzEtO1/). Both new items were checked against the backlog by speaker+topic: **no matches found, no pruning triggered.** Both new exclusions were added to `theaiaxon_published_exclusions` for future runs. Both dedup checks succeeded cleanly, no errors — this run is fully deduped.
+
+**Discovery (available 59 < 100, topped up):** 4 parallel subagent lanes:
+1. X search — Tier 1/2 speakers with fresh angles not yet in the backlog (Bezos, Ellison, Zuckerberg, plus re-checks of Tim Cook/Nadella/Pichai)
+2. X search — cross-industry non-tech voices (world leaders, entertainers, athletes, intellectuals, doctors, business figures outside tech)
+3. Instagram theme-page recency check (13 accounts, posts after 2026-07-09 only)
+4. X search — finance/entertainment/global figures
+
+Lane 3 (IG theme pages) found **zero new qualifiers** — confirms the FORMAT-gate exhaustion from prior runs: @airesearches and @evolving.ai are now 100% AI-generated/CGI content post-2026-07-09, @ai_wealth is a dead handle (`not_found` error), @aitherevolution remains mis-resolved to unrelated accounts. Both need manual handle correction before the next IG sweep.
+
+Lanes 1, 2, and 4 (X search) were the productive levers: **+12 available**, review count unchanged at 8.
+
+New speakers/topics added:
+- **Larry Ellison** (brand-new speaker, 4 distinct topics: AI police-surveillance system, Stargate Project cancer-vaccine framing, nuclear-powered GPU clusters, AI commoditization/data-moat argument) — highest single-speaker yield this run, space out when scheduling.
+- **Ken Griffin** (Citadel CEO, 2 topics likely from the same underlying Stanford-style talk — space apart if both scheduled): AI automating "extraordinarily high-skilled" finance-PhD work in days, and a step-change in internal AI productivity.
+- **Theo Von** and **Jeff Bridges** (same podcast episode, This Past Weekend w/ Theo Von — source confirmed): Von on AI data centers and a coming "emotional credit score"; Bridges on using Suno AI to write a song for his wife.
+- **Jeff Bezos** — tech disruption creates invisible new jobs analogy.
+- **Mark Zuckerberg** — new topic (AI-driven erosion of human social connection), distinct from the existing stale 2023 Metaverse-avatar clip.
+- **Emmanuel Macron** — first world-leader speaker in the backlog (Mistral AI / European AI sovereignty).
+- **Billie Eilish** — highest views this run (12.8M), reacting on-camera to an AI deepfake Met Gala photo of herself.
+
+Most new adds are `source: UNCONFIRMED` (X repost metadata rarely names the underlying event/venue) — verify at edit time before posting; Theo Von/Jeff Bridges are the two `confirmed`-source exceptions.
+
+Tried-and-empty this run (do not re-search next time unless noted): Tim Cook, Satya Nadella, Sundar Pichai; Xi Jinping, Narendra Modi, Justin Trudeau, Zelensky, JD Vance, Gavin Newsom, Rishi Sunak; Zendaya, Timothee Chalamet, Dwayne Johnson, Kevin Hart, Ryan Reynolds, Ariana Grande, Nicki Minaj, Kanye West; Djokovic, Ronaldo, Messi, Belichick, Saban; Yuval Noah Harari (695K, just under gate), Gladwell, Jordan Peterson, Sam Harris; Peter Attia, Huberman, Eric Topol; Bernard Arnault, Mukesh Ambani, Howard Schultz; Bill Ackman, Druckenmiller, David Sacks, Bill Hwang, Taleb, El-Erian, Larry Summers; Andrew Schulz, Whoopi Goldberg, The View, Piers Morgan, Megyn Kelly, King Charles, MBS, Tom Brady, Bill Maher.
+
+**No Apify quota or auth errors** across any of the 4 discovery lanes or the theaibolt/theaiaxon refresh calls.
+
+**Available now 71/100** (was 59), review 8 (unchanged).
+
+### Top 3 new additions — hooks
+
+**Billie Eilish** (12,840,342 views, Controversial)
+1. Billie Eilish saw a fake AI photo of herself. Her reaction shocked fans.
+2. Billie Eilish got blamed for an outfit she never wore. AI made it up.
+3. Everyone thought it was Billie Eilish. It was actually AI. She had one thing to say.
+
+**Ken Griffin** (6,494,151 views, Emotional)
+1. Ken Griffin watched AI finish months of work in days. Then he went home depressed.
+2. Ken Griffin runs a top hedge fund. Watching his own AI made him uneasy.
+3. Ken Griffin saw what AI can now do to skilled jobs. It changed his mood.
+
+**Theo Von** (4,576,513 views, Controversial)
+1. Theo Von warns one company could soon own everyone's personal data forever.
+2. Theo Von thinks AI is building something nobody asked for near their home.
+3. Theo Von predicts a score that follows you everywhere. AI decides it.
+
+### UNCONFIRMED flags
+Source venue/event unconfirmed for: Jeff Bezos, all 4 Larry Ellison clips (2 likely Oracle CloudWorld 2024, exact confirmation pending), Mark Zuckerberg, both Ken Griffin clips, Emmanuel Macron, Billie Eilish. Verify before posting.
