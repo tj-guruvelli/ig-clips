@@ -351,3 +351,61 @@ Tried-and-empty this run (do not re-search next time unless noted): Tim Cook, Sa
 
 ### UNCONFIRMED flags
 Source venue/event unconfirmed for: Jeff Bezos, all 4 Larry Ellison clips (2 likely Oracle CloudWorld 2024, exact confirmation pending), Mark Zuckerberg, both Ken Griffin clips, Emmanuel Macron, Billie Eilish. Verify before posting.
+
+## 2026-07-26 — Daily discovery run (3-lane parallel: X new-speakers, cross-industry, YouTube-native)
+
+**@theaibolt refresh:** Apify `apify/instagram-reel-scraper` full sweep (200-result limit, 143/143 items returned) found **zero new posts** — newest timestamp still 2026-07-09. @theaibolt has not posted anything new in 17 days; this lever remains fully exhausted.
+
+**@theaiaxon dedup (STEP 1b):** Apify published-reels scrape now returns 4 published items (was 2). The 2 already-tracked items (Sam Altman/Tucker Carlson; Joe Rogan/Duncan Trussell "Ghost Murmur") are unchanged. 2 NEW published posts surfaced:
+- **Raoul Pal / Diary of a CEO** — "AI can copy any business and build a better version in minutes" (published 2026-07-26)
+- **Palmer Luckey / Joe Rogan Experience #2394** — battlefield AI "hive mind" system (Ghost X drone, shared real-time view for soldiers/drones/robots) (published 2026-07-25)
+
+Metricool `getScheduledPosts` (brandId 6566296, -30/+30 day window, America/Chicago) returned only the already-tracked Elon Musk/Dwarkesh HAL-9000 post (still `PUBLISHED`, not a new future-scheduled item) — **no new scheduled posts.** Both new exclusions checked against the backlog: Raoul Pal was not present (no pruning). The 2 existing Palmer Luckey backlog clips (jailbreak-ChatGPT; "software engineering problem" framing of warfare) cover distinct topics from the newly-excluded hive-mind clip, even though all three trace to the same JRE #2394 episode — kept as available, flagged for a manual same-episode overlap check before scheduling. Both new items added to `theaiaxon_published_exclusions`. **Both dedup checks succeeded, no errors — this run is fully deduped.**
+
+**Discovery (available 71 < 100, topped up):** 3 parallel subagent lanes:
+1. **Lane A** — X search for brand-new speakers not yet tried (Big Tech / VC-adjacent figures: LeCun, Palihapitiya, Calacanis, Schmidt, Chesky, etc.)
+2. **Lane B** — X + Instagram search for cross-industry non-tech speakers (healthcare, law, education, sports execs, entertainment producers/directors, aviation, journalism, science, military, religion, chefs/tradespeople)
+3. **Lane C** — YouTube-native search via `api-ninja/youtube-search-scraper` (backed by the YouTube Data API for authoritative view counts, since generic web search returned no reliable view data for YouTube pages)
+
+**Lane B returned zero new qualifiers** after 9 successful Apify calls (~40 search terms plus IG keyword-reel sweeps) — a genuine exhaustion signal for the current cross-industry query set, not a quota issue. Near-misses checked and rejected: Neil deGrasse Tyson (~99K views, well under gate), Dalai Lama (topic was anger/compassion, not AI), Bill Maher/Kara Swisher (1.02M views but about Ozempic), David Friedberg (1.32M views but about US vs. socialism). No Apify quota or auth errors in this lane.
+
+**Lanes A + C together yielded +16 available** — the best single-run haul since the 2026-07-09 account-audit exhaustion:
+- **Yann LeCun** — 2nd topic (AI innovation shifting to India/Africa), distinct from the existing "doomers are wrong" clip.
+- **Chamath Palihapitiya** — 3 topics (Tesla/Google as AI-race winners; reacting to AI-agent token costs; Tesla FSD safety gains). Heavy single-run yield for one speaker, space out.
+- **Jason Calacanis** — Amazon "100% robotic by 2030" prediction.
+- **Eric Schmidt** — 3 topics (booed at a commencement address over AI jobs; AI's "infinite" energy demand; a TED talk on AI's underestimated impact). 2 via X, 1 via YouTube — heaviest single-speaker yield this run, space out heavily.
+- **Brian Chesky** — Airbnb's AI-driven "founder mode" vision.
+- **Sundar Pichai** — 2 topics via YouTube (Bloomberg business interview; casual MKBHD product conversation) — first time this speaker cleared the bar after repeated X-search misses.
+- **Satya Nadella** — Copilot+ PCs vs. Mac, via YouTube (WSJ) — first time clearing the bar.
+- **Jordan Peterson** — AGI/super-intelligence conversation, via YouTube — first time clearing the bar.
+- **Sam Altman** — landmark first Senate AI-regulation testimony, via YouTube — distinct from 3 existing Altman clips and the excluded Tucker Carlson theaiaxon post.
+- **Tristan Harris** — 2nd topic (AI lab leaders privately prepping for societal collapse).
+- **Yuval Noah Harari** — AI as the first technology able to make its own decisions, via YouTube — first time clearing the bar (prior X-search high was 695K; this native YouTube keynote clears at 2.58M).
+
+**Key finding:** the YouTube lane (Priority 3, previously underused relative to X/IG) unlocked 3 speakers marked "tried-and-empty" on X in prior runs (Nadella, Peterson, Harari) — native YouTube view counts often run far higher than X-repost view counts for the same interview. Recommend YouTube search become a **standing 4th discovery lane** going forward, not just a fallback.
+
+Tried-and-empty this run, cross-industry lane (do not re-search bare unless a genuinely new angle emerges): Neil deGrasse Tyson, Dalai Lama, Bill Maher, Kara Swisher, David Friedberg, Sal Khan, Rick Rubin, Gordon Ramsay, Daryl Morey, Billy Beane, Sanjay Gupta, Marty Makary, James Cameron, Christopher Nolan, will.i.am, Michio Kaku, Chris Hadfield, plus generic doctor/lawyer/teacher/chef/pilot/scientist/film-director keyword sweeps on Instagram (returned only AI-generated content-farm videos, failing the FORMAT gate).
+
+**No Apify quota or auth errors** across any of the 3 discovery lanes or the theaibolt/theaiaxon refresh calls.
+
+**Available now 87/100** (was 71), review 8 (unchanged). Below the 90-alert threshold — no cap alert this run.
+
+### Top 3 new additions — hooks
+
+**Chamath Palihapitiya — Tesla/Google as the AI-race winners (7,918,964 views)**
+1. Chamath Palihapitiya named the two companies winning the AI race.
+2. Chamath Palihapitiya says only two companies can truly win AI.
+3. Chamath Palihapitiya ranked the AI race. Two names made the cut.
+
+**Eric Schmidt — booed at commencement over AI jobs (1,251,131 views)**
+1. Eric Schmidt got booed on stage. AI jobs was the reason.
+2. Eric Schmidt talked AI at a graduation. Students booed him.
+3. Eric Schmidt faced boos mid-speech while talking about AI jobs.
+
+**Yuval Noah Harari — AI as the first self-deciding technology (2,583,142 views)**
+1. Yuval Noah Harari says AI just crossed a line no tech has.
+2. Yuval Noah Harari warns AI can now decide things on its own.
+3. Yuval Noah Harari says history has never seen a technology like this.
+
+### UNCONFIRMED flags
+Source event/venue unconfirmed for: Jason Calacanis (Amazon prediction), Chamath Palihapitiya's Tesla-FSD clip and agent-token-cost clip (All-In episode confirmed as the poster, but not cross-verified), Eric Schmidt's energy-demand clip. Verify before posting. All YouTube-lane clips (Pichai x2, Nadella, Peterson, Altman, Harris, Schmidt TED, Harari) have source and view counts confirmed directly from YouTube via the API-backed scraper.

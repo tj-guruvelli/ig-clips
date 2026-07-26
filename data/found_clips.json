@@ -125,7 +125,23 @@
     "https://x.com/clashreport/status/2066128853186035807",
     "https://x.com/PopBase/status/1922864970460500291",
     "https://www.instagram.com/p/DbL6a1Xp3Jp/",
-    "https://www.instagram.com/reel/DbL8iQzEtO1/"
+    "https://www.instagram.com/reel/DbL8iQzEtO1/",
+    "https://x.com/disclosetv/status/2024474257812513187",
+    "https://x.com/theallinpod/status/1937567726194893129",
+    "https://x.com/theallinpod/status/2024157675538243661",
+    "https://x.com/unusual_whales/status/1964358179384676637",
+    "https://x.com/clashreport/status/2056762624176505065",
+    "https://x.com/tsarnick/status/1842401670225125539",
+    "https://x.com/MarioNawfal/status/1882706304491221266",
+    "https://x.com/patrick_oshag/status/2051663206771265799",
+    "https://www.youtube.com/watch?v=5puu3kN9l7c",
+    "https://www.youtube.com/watch?v=n2RNcPRtAiY",
+    "https://www.youtube.com/watch?v=UNbyT7wPwk4",
+    "https://www.youtube.com/watch?v=S_E4t7tWHUY",
+    "https://www.youtube.com/watch?v=fP5YdyjTfG0",
+    "https://www.youtube.com/watch?v=NufB1LL_rCU",
+    "https://www.youtube.com/watch?v=id4YRO7G0wE",
+    "https://www.youtube.com/watch?v=LWiM-LuRe6w"
   ],
   "posted_urls": [
     "https://www.instagram.com/p/DabeOExxUtN/",
@@ -272,8 +288,8 @@
     "https://www.instagram.com/p/DXXif4oxVRy/",
     "https://www.instagram.com/p/DXmNiS7EVuQ/"
   ],
-  "last_updated": "2026-07-25",
-  "notes": "2026-07-22: theaibolt posted_urls re-verified via Apify (200-limit sweep, 142 items returned / 143 known) - identical to prior sweep, zero new posts, zero pruning needed. The 22 clips seeded earlier today in clips_log (from airesearches/evolving.ai/thewizeai/theaipage) were audited and marked disqualified: all are AI-generated/CGI video with no real speaker (speaker field empty on every entry), failing the hard FORMAT gate - they were NOT promoted to backlog.json. Ran the two untried levers flagged 2026-07-09: X/Twitter search (api-ninja/x-twitter-advanced-search) and direct speaker-name + cross-industry keyword search on Instagram (data-slayer/instagram-search-reels), both via 3 parallel subagents. Found 14 new qualifying-or-review-tier URLs, appended above. found_urls now includes every URL ever surfaced as a 1M+ candidate (available or review status) across all runs; the found-then-rejected 22 AI-generated clips are tracked only in clips_log, not found_urls, since they never qualified. See data/backlog.json 'status' field for the full run narrative. MERGED 2026-07-24: two concurrent discovery runs on the same day, union-merged. Run A (dedup-only resweep): theaibolt resweep unchanged (143/143). First-ever @theaiaxon dedup pass (STEP 1b): published-reels scrape returned 1 post (Sam Altman/Tucker Carlson, tracked in backlog.json theaiaxon_published_exclusions, not added to found_urls since it is @theaiaxon's own repost not a source clip); Metricool scheduled-posts returned 0. Ran 6 X-search + 5 IG-search queries across untried Tier2/3 speakers and cross-industry fields (medicine, law, music, economics, sports) - all 11 Apify runs succeeded with no quota errors, but zero results cleared the 1M-view+real-speaker+on-topic bar, so nothing new was appended to found_urls or clips_log by this run. Run B (net-new discovery, union-merged into this record): theaibolt posted_urls re-verified via Apify (200-limit sweep, 142/143 items) - identical to prior sweep, zero new posts. theaiaxon dedup (STEP 1b) also run this cycle with the same clean result (1 published reel, 0 scheduled). 3 parallel discovery lanes (X/Twitter search, IG cross-industry keyword search, mega-podcast post-2026-07-09 recency check) added 22 new qualifying-or-review URLs, now merged into found_urls above. See data/backlog.json 'status' field for full run narrative. RUN #4 2026-07-24: theaibolt resweep unchanged (143/142, zero new). theaiaxon dedup clean (1 published reel, 0 scheduled, no errors). 4 parallel subagent lanes (X-search AI researchers/execs, X-search cross-industry, IG mega-podcast recency, X-search finance/entertainment) added 11 new qualifying-or-review URLs to found_urls/clips_log (10 qualified, 1 review - Snoop Dogg at the 1M line with AI as a secondary topic). IG mega-podcast lane found zero new (exhaustion holds); 3 broken handles corrected (@tferriss->@timferriss, @modernwisdompodcast->@chriswillx, @nikhilkamathofficial->@nikhilkamathcio) but all empty; @20vc still unresolvable. See data/backlog.json 'status' field for full run narrative.",
+  "last_updated": "2026-07-26",
+  "notes": "2026-07-22: theaibolt posted_urls re-verified via Apify (200-limit sweep, 142 items returned / 143 known) - identical to prior sweep, zero new posts, zero pruning needed. The 22 clips seeded earlier today in clips_log (from airesearches/evolving.ai/thewizeai/theaipage) were audited and marked disqualified: all are AI-generated/CGI video with no real speaker (speaker field empty on every entry), failing the hard FORMAT gate - they were NOT promoted to backlog.json. Ran the two untried levers flagged 2026-07-09: X/Twitter search (api-ninja/x-twitter-advanced-search) and direct speaker-name + cross-industry keyword search on Instagram (data-slayer/instagram-search-reels), both via 3 parallel subagents. Found 14 new qualifying-or-review-tier URLs, appended above. found_urls now includes every URL ever surfaced as a 1M+ candidate (available or review status) across all runs; the found-then-rejected 22 AI-generated clips are tracked only in clips_log, not found_urls, since they never qualified. See data/backlog.json 'status' field for the full run narrative. MERGED 2026-07-24: two concurrent discovery runs on the same day, union-merged. Run A (dedup-only resweep): theaibolt resweep unchanged (143/143). First-ever @theaiaxon dedup pass (STEP 1b): published-reels scrape returned 1 post (Sam Altman/Tucker Carlson, tracked in backlog.json theaiaxon_published_exclusions, not added to found_urls since it is @theaiaxon's own repost not a source clip); Metricool scheduled-posts returned 0. Ran 6 X-search + 5 IG-search queries across untried Tier2/3 speakers and cross-industry fields (medicine, law, music, economics, sports) - all 11 Apify runs succeeded with no quota errors, but zero results cleared the 1M-view+real-speaker+on-topic bar, so nothing new was appended to found_urls or clips_log by this run. Run B (net-new discovery, union-merged into this record): theaibolt posted_urls re-verified via Apify (200-limit sweep, 142/143 items) - identical to prior sweep, zero new posts. theaiaxon dedup (STEP 1b) also run this cycle with the same clean result (1 published reel, 0 scheduled). 3 parallel discovery lanes (X/Twitter search, IG cross-industry keyword search, mega-podcast post-2026-07-09 recency check) added 22 new qualifying-or-review URLs, now merged into found_urls above. See data/backlog.json 'status' field for full run narrative. RUN #4 2026-07-24: theaibolt resweep unchanged (143/142, zero new). theaiaxon dedup clean (1 published reel, 0 scheduled, no errors). 4 parallel subagent lanes (X-search AI researchers/execs, X-search cross-industry, IG mega-podcast recency, X-search finance/entertainment) added 11 new qualifying-or-review URLs to found_urls/clips_log (10 qualified, 1 review - Snoop Dogg at the 1M line with AI as a secondary topic). IG mega-podcast lane found zero new (exhaustion holds); 3 broken handles corrected (@tferriss->@timferriss, @modernwisdompodcast->@chriswillx, @nikhilkamathofficial->@nikhilkamathcio) but all empty; @20vc still unresolvable. See data/backlog.json 'status' field for full run narrative. RUN #6 2026-07-26: theaibolt resweep unchanged (143/143, zero new since 2026-07-09). theaiaxon dedup clean (4 published reels now, 2 new exclusions added: Raoul Pal, Palmer Luckey/JRE#2394 hive-mind; 0 new scheduled). 3 parallel subagent lanes (X-search new Big Tech/VC speakers, X+IG cross-industry, YouTube-native search) added 16 new qualifying URLs to found_urls (Lane B cross-industry returned zero - genuine exhaustion, not quota). YouTube lane (via api-ninja/youtube-search-scraper backed by YouTube Data API) unlocked 3 previously-tried-and-empty speakers (Nadella, Peterson, Harari) - recommend as standing 4th lane going forward. See data/backlog.json status field for full run narrative.",
   "clips_log": {
     "https://www.instagram.com/p/Da7kkKlKMJG/": {
       "platform": "instagram",
@@ -1300,12 +1316,12 @@
       "date": "2024-05-30"
     }
   },
-  "total_found": 126,
-  "total_qualified": 40,
-  "total_over_1m": 64,
+  "total_found": 142,
+  "total_qualified": 56,
+  "total_over_1m": 80,
   "stats": {
-    "total_found": 126,
-    "total_qualified": 40,
-    "total_over_1m": 64
+    "total_found": 142,
+    "total_qualified": 56,
+    "total_over_1m": 80
   }
 }
