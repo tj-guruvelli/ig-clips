@@ -1218,6 +1218,22 @@
       "source": "Dwarkesh Podcast",
       "posted_on_theaiaxon": "2026-07-24",
       "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Published via Metricool scheduled post, confirmed live on IG."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbPENRwNJjO/",
+      "speaker": "Raoul Pal / Diary of a CEO",
+      "topic": "AI can copy any business and build a better version in minutes - your competitive edge from hard work is gone",
+      "source": "The Diary Of A CEO",
+      "posted_on_theaiaxon": "2026-07-26",
+      "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Checked against backlog: no Raoul Pal candidates present, no pruning needed."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbOr4adpr8B/",
+      "speaker": "Palmer Luckey / Joe Rogan Experience #2394",
+      "topic": "Battlefield AI system (Ghost X drone) giving soldiers/drones/robots a shared real-time view, described as a 'hive mind'",
+      "source": "Joe Rogan Experience #2394",
+      "posted_on_theaiaxon": "2026-07-25",
+      "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Backlog has 2 other Palmer Luckey clips (jailbreak-ChatGPT DQUhcagkvOj, and software-engineering-problem-of-warfare DYmksjDoykn from the SAME JRE #2394 episode) - topics are distinct segments of that episode, kept as available, but flag for manual double-check before scheduling given same-episode overlap risk."
     }
   ],
   "alert_threshold": 90,
