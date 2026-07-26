@@ -409,3 +409,18 @@ Tried-and-empty this run, cross-industry lane (do not re-search bare unless a ge
 
 ### UNCONFIRMED flags
 Source event/venue unconfirmed for: Jason Calacanis (Amazon prediction), Chamath Palihapitiya's Tesla-FSD clip and agent-token-cost clip (All-In episode confirmed as the poster, but not cross-verified), Eric Schmidt's energy-demand clip. Verify before posting. All YouTube-lane clips (Pichai x2, Nadella, Peterson, Altman, Harris, Schmidt TED, Harari) have source and view counts confirmed directly from YouTube via the API-backed scraper.
+
+## 2026-07-26 (addendum) — Bulletproof live re-verification pass (user-requested)
+
+User asked for certainty beyond point-in-time discovery captures: that every "available" backlog clip genuinely has 1M+ views *right now*, and that none duplicate @theaibolt's posted library.
+
+**Method:** re-fetched live metadata for all 87 then-available candidates directly from source, split by platform:
+- **YouTube (8 clips)** — `beyondops/youtube-metadata-scraper-pro-v2`, direct video URL lookup. All 8 reconfirmed ≥1M, numbers essentially unchanged.
+- **Instagram (24 clips)** — `data-slayer/instagram-post-details`, direct post URL lookup (`metrics.play_count`). All 24 reconfirmed ≥1M.
+- **X/Twitter (55 clips)** — several actors tried first: `apidojo/tweet-scraper` with `startUrls` returned 0 items (doesn't support direct tweet-URL lookup here); `kaitoeasyapi/twitter-x-data-tweet-scraper` with `tweetIDs` failed outright; `apidojo/tweet-scraper` with `conversationIds` worked but returns the entire reply thread (300+ items per tweet) rather than just the root tweet, unworkably expensive at 55x scale. Landed on `danek/twitter-scraper` with `lookup_post_ids` — clean, direct, one row per requested tweet ID, no thread noise. Ran all 55 in a single batch call.
+
+**Result: 86/87 reconfirmed live at 1,000,000+ views**, all within normal natural-growth drift of their recorded values (no decreases observed, consistent with view counts being monotonic). **1 exception:** the Bill Gates / @redpillb0t clip (`x.com/redpillb0t/status/2040397754476999075`, recorded 3,006,175 views) returned an access error ("content may be private, deleted, or app-only") on two independent methods — the direct `danek/twitter-scraper` lookup and, separately, a sub-agent's `rag-web-browser` check. **Downgraded from `available` to `review`** pending a manual check; cannot currently confirm it clears the 1M gate or is even still live.
+
+**@theaibolt exact-URL dedup:** cross-checked all 87 backlog URLs against @theaibolt's same-day freshly-scraped 143-post library (URL-exact match). **Zero matches.** Note: per this project's dedup_semantics, matching @theaibolt by *speaker+topic* is actually expected and even prioritized (their library is a source catalog we deliberately repost proven clips from) — the binding "never repost" constraint is @theaiaxon's own published+scheduled history, which was already checked clean earlier in today's run (STEP 1b).
+
+**Available now 86/100** (was 87 before this pass), review 9 (was 8).
