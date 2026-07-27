@@ -424,3 +424,60 @@ User asked for certainty beyond point-in-time discovery captures: that every "av
 **@theaibolt exact-URL dedup:** cross-checked all 87 backlog URLs against @theaibolt's same-day freshly-scraped 143-post library (URL-exact match). **Zero matches.** Note: per this project's dedup_semantics, matching @theaibolt by *speaker+topic* is actually expected and even prioritized (their library is a source catalog we deliberately repost proven clips from) — the binding "never repost" constraint is @theaiaxon's own published+scheduled history, which was already checked clean earlier in today's run (STEP 1b).
 
 **Available now 86/100** (was 87 before this pass), review 9 (was 8).
+
+## 2026-07-27 — Daily discovery run (3-lane parallel: X new-speakers, YouTube-native, theme-page recency), backlog hit the 100 cap
+
+**@theaibolt refresh:** Apify `apify/instagram-reel-scraper` full sweep (200-result limit, 143/143 items returned, exact URL-set match against the stored posted_urls) found **zero new posts** — @theaibolt has not posted anything new since 2026-07-09, now 18 days. This lever remains fully exhausted.
+
+**@theaiaxon dedup (STEP 1b):** Apify published-reels scrape now returns 5 published items (was 4). 1 NEW published post surfaced:
+- **Jeff Bezos / America Business Forum** — "AI reviews building permits in 10 seconds instead of months" (published 2026-07-26, Miami stage appearance)
+
+Checked against the backlog: no match, no pruning needed — but notably, this run's own Lane A (X search) independently surfaced an X repost of the exact same Bezos permit clip; it was caught and excluded before ever entering the backlog (see dedup section below). Metricool `getScheduledPosts` (brandId 6566296, 2026-06-27 to 2026-08-26 window, America/Chicago) returned only the already-tracked Elon Musk/Dwarkesh HAL-9000 post (still `PUBLISHED`) — **no new scheduled posts.** New exclusion added to `theaiaxon_published_exclusions`. **Both dedup checks succeeded, no errors — this run is fully deduped.**
+
+**Discovery (available 86 < 100, topped up):** 3 parallel subagent lanes:
+1. **Lane A** — X/Twitter search for new speakers across tech/VC, entertainment, sports, music, and health
+2. **Lane B** — YouTube-native search (now a standing lane per 2026-07-26's recommendation)
+3. **Lane C** — theme-page recency check on @evolving.ai, @theaifield, @theaipage, @airesearches, @ainterestingupdate, @godofprompt, @power.ai, @artificialintelligenceee, @thewizeai, @chatgptricks — restricted to posts after 2026-07-22 (the date of the last exhaustive sweep)
+
+**Lane C returned zero qualifiers.** @thewizeai and @chatgptricks errored (empty/private data). Of 54 posts returned across the other 8 accounts, only 5 cleared 1M+ views for the post-07-22 window, and all 5 failed the hard FORMAT gate: two AI-generated anime recreations ("Naruto vs Pain", "Baki"), an AI dystopia short film, a humanoid-robot fight-league clip, and a no-speaker iFLYTEK product demo. Consistent with this batch of theme pages skewing CGI/no-speaker content.
+
+**Lanes A + B together yielded 19 new qualifying URLs** after dedup. 4 raw duplicates were caught and discarded:
+- Jeff Bezos (Miami permits, X repost) — matches the new @theaiaxon published exclusion above
+- Jeff Bezos (farmer-to-massage-therapist analogy) — exact URL already in the backlog since 2026-07-25
+- Marc Andreessen ("AGI already quietly crossed") — same speaker+topic already in the backlog since 2026-07-24
+- Tristan Harris (Alibaba AI safety incident) — same speaker+topic already in the backlog
+
+Since only 14 were needed to reach the 100 cap, the 14 highest-confidence, most pillar-balanced candidates were promoted to `available`; the remaining 5 were kept as `review` — all are clean 1M+ qualifiers, held back purely because of the cap:
+- Molly Crabapple (60 Minutes, AI art scraping) — Controversial, 1.14M
+- Sen. Bernie Sanders (interviewing Claude on AI privacy) — Controversial, 4.9M
+- Sasha Luccioni (TED, AI ethics) — Controversial, 1.95M, age-flagged (2023)
+- Andrew Yang (CNBC, AI and jobs) — Educational, 1.05M, age-flagged, lowest views this run
+- Demis Hassabis 2nd topic (Davos AGI debate w/ Dario Amodei, via re-upload) — Educational, 1.08M, weakest sourcing this run
+
+**Promote these 5 first next run, before new discovery.**
+
+**New speakers unlocked this run:** Bill McDermott (ServiceNow CEO, CNBC), Chris Olah (Anthropic co-founder, addressed the Pope at the Vatican — distinct from saturated Dario Amodei), David Sacks (a16z, White House AI Czar), Murphy Campbell (independent musician, AI song-cloning harm story — fills the Emotional pillar), Gary Brecka (health/longevity), Matthew McConaughey with Timothee Chalamet (Oscars/AI-acting), Adam Silver (NBA Commissioner, AI officiating review), Joseph Gordon-Levitt (Utah Capitol AI child-safety testimony), Roman Yampolskiy (AI safety researcher), Ian Bremmer (geopolitical risk), Rishi Sunak (former UK PM, Davos panel). Also added distinct 2nd topics for already-present speakers Mustafa Suleyman (TED talk), Jensen Huang (NVIDIA GTC 2026 keynote — 35.9M views, largest single view count surfaced this run), and Andrej Karpathy (Lex Fridman #333, Tesla AI).
+
+**No Apify quota or auth errors** across any of the 3 discovery lanes or the theaibolt/theaiaxon refresh calls.
+
+**BACKLOG NEAR CAP: 100/100 1M+ clips found - review or raise the cap.** Available now 100/100 (was 86), review 14 (was 9, +5 surplus). Alert threshold (90) exceeded — the pool is now completely full for the first time.
+
+### Top 3 new additions — hooks
+
+**Roman Yampolskiy — which jobs survive AI by 2030 (20,313,086 views)**
+1. Roman Yampolskiy says most jobs will not survive past 2030.
+2. Roman Yampolskiy picked the jobs AI cannot touch. Most failed.
+3. Roman Yampolskiy ranked every job by how long it survives AI.
+
+**David Sacks — the real AI danger isn't robots (16,352,654 views)**
+1. David Sacks says the real AI danger is not robots.
+2. David Sacks named the AI risk nobody is talking about.
+3. David Sacks thinks the scariest AI outcome has nothing to do with robots.
+
+**Jensen Huang — NVIDIA GTC 2026 keynote (35,952,926 views)**
+1. Jensen Huang revealed what powers AI next. It shocked the room.
+2. Jensen Huang unveiled NVIDIA's next AI move live on stage.
+3. Jensen Huang showed the future of AI. Few saw it coming.
+
+### UNCONFIRMED flags
+Source not independently verified beyond the repost account for: Murphy Campbell (AI song-cloning story — originating platform/interview unconfirmed), Joseph Gordon-Levitt (local Utah news source names bill HB286, lends credibility, but not cross-checked further). Several Lane A candidates carry estimated (not scraper-confirmed) durations since the source actor doesn't expose exact runtime for reposted X clips — flagged individually in their `note` fields. Verify all of the above before scheduling.
