@@ -481,3 +481,11 @@ Since only 14 were needed to reach the 100 cap, the 14 highest-confidence, most 
 
 ### UNCONFIRMED flags
 Source not independently verified beyond the repost account for: Murphy Campbell (AI song-cloning story — originating platform/interview unconfirmed), Joseph Gordon-Levitt (local Utah news source names bill HB286, lends credibility, but not cross-checked further). Several Lane A candidates carry estimated (not scraper-confirmed) durations since the source actor doesn't expose exact runtime for reposted X clips — flagged individually in their `note` fields. Verify all of the above before scheduling.
+
+## 2026-07-27 (addendum) — Second same-day invocation, verification-only pass
+
+This scheduled run fired again ~5.5 hours after the run above (10:26 UTC -> 15:57 UTC), which had already topped the backlog to the 100/100 cap and pushed to main. No fresh discovery was warranted (cap already met, `available_count` == 100).
+
+Re-ran STEP 1b (the bulletproof @theaiaxon dedup check) as a live guard: Apify published-reels scrape for @theaiaxon returned the same 5 published items as the run above (Palmer Luckey/Rogan, Duncan Trussell/Rogan Ghost Murmur, Jeff Bezos permits, Sam Altman/Tucker Carlson, Raoul Pal/Diary of a CEO), all already recorded in `theaiaxon_published_exclusions`. Metricool `getScheduledPosts` (brandId 6566296, 2026-06-27 to 2026-08-26, America/Chicago) returned only the same Elon Musk/Dwarkesh HAL-9000 post, status `PUBLISHED`, already excluded. No new published or scheduled posts, no matches against the backlog, nothing to prune.
+
+No discovery run, no backlog/found_clips changes. Backlog remains 100/100 available, fully deduped.
