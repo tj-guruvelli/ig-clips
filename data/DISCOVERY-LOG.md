@@ -489,3 +489,42 @@ This scheduled run fired again ~5.5 hours after the run above (10:26 UTC -> 15:5
 Re-ran STEP 1b (the bulletproof @theaiaxon dedup check) as a live guard: Apify published-reels scrape for @theaiaxon returned the same 5 published items as the run above (Palmer Luckey/Rogan, Duncan Trussell/Rogan Ghost Murmur, Jeff Bezos permits, Sam Altman/Tucker Carlson, Raoul Pal/Diary of a CEO), all already recorded in `theaiaxon_published_exclusions`. Metricool `getScheduledPosts` (brandId 6566296, 2026-06-27 to 2026-08-26, America/Chicago) returned only the same Elon Musk/Dwarkesh HAL-9000 post, status `PUBLISHED`, already excluded. No new published or scheduled posts, no matches against the backlog, nothing to prune.
 
 No discovery run, no backlog/found_clips changes. Backlog remains 100/100 available, fully deduped.
+
+## 2026-07-28 — Run #8: dedup-driven prune + backfill from review pool (no new discovery needed)
+
+**@theaibolt refresh:** Apify `apify/instagram-reel-scraper` full sweep (200-result limit, 143/143 items returned, exact URL-set match) found **zero new posts** — max timestamp across all 143 items is still 2026-07-09T04:38:51Z. 19 days of continued exhaustion; this lever remains fully dead.
+
+**@theaiaxon dedup (STEP 1b):** Apify published-reels scrape now returns 7 published items (was 5). 2 NEW published posts surfaced since the 2026-07-27 run:
+- **Dario Amodei / CBS News** — Pentagon asked Anthropic to drop no-spying/no-autonomous-weapons limits from its defense contract; Amodei refused, Trump ordered agencies to stop using Anthropic, Hegseth labeled it a supply-chain risk (published 2026-07-27)
+- **Geoffrey Hinton / 60 Minutes** — Scott Pelley asks if humans will become the second most intelligent species on the planet; Hinton says "yeah" (published 2026-07-27)
+
+Metricool `getScheduledPosts` (brandId 6566296, 2026-06-28 to 2026-08-27 window, America/Chicago) returned only the already-tracked Elon Musk/Dwarkesh HAL-9000 post (still `PUBLISHED`) — **no new scheduled posts.** Both new items added to `theaiaxon_published_exclusions`. **Both dedup checks succeeded, no errors — this run is fully deduped.**
+
+**Pruning (STEP 2):** Both new @theaiaxon posts matched existing backlog candidates by speaker+topic:
+- Dario Amodei/CBS Pentagon story matched `twitter.com/r0ck3t23/status/2027698383037591957` (same Pentagon/Anthropic supply-chain-risk story, sourced via The Economist instead of CBS) — **pruned, status -> posted**
+- Geoffrey Hinton/60-Minutes matched `reel/DN1KONh3q8z` (same 60 Minutes interview, same AI-surpasses-human-intelligence topic) — **pruned, status -> posted**
+
+Available dropped to 98/100.
+
+**Backfill (no new discovery run):** per the 2026-07-27 run's own recommendation to promote surplus `review` candidates before spending new Apify discovery quota, promoted the 2 highest-confidence review-surplus candidates back to `available`:
+- **Bernie Sanders** — interviewing Claude directly on AI data privacy/surveillance (official Senate YouTube channel, 4,906,643 views, no age flag)
+- **Molly Crabapple** — calls AI art scraping "the greatest art heist in history" (official 60 Minutes/CBS account, 1,142,612 views, no age flag)
+
+The remaining 3 review-surplus candidates (Sasha Luccioni — age-flagged 2023 TED talk; Andrew Yang — age-flagged, lowest views; Demis Hassabis 2nd-topic — weaker re-upload sourcing) stay in `review` as the next-best promotion candidates.
+
+**BACKLOG BACK AT THE 100 CAP: 100/100 1M+ clips found - review or raise the cap.** Available 100/100 (unchanged net), review 12 (was 14, -2 promoted), posted 2 (new this run). No Apify quota errors.
+
+### Hooks for the 2 promoted additions
+
+**Bernie Sanders — interviewing Claude on AI privacy (4,906,643 views)**
+1. Bernie Sanders sat down with an AI. It admitted something unsettling.
+2. Bernie Sanders asked Claude a question. The answer worried him.
+3. Bernie Sanders interviewed an AI instead of a person. Here's why.
+
+**Molly Crabapple — the greatest art heist in history (1,142,612 views)**
+1. Molly Crabapple says artists just lived through history's biggest heist.
+2. Molly Crabapple named the heist nobody is calling a crime.
+3. Molly Crabapple says AI didn't borrow from artists. It stole.
+
+### UNCONFIRMED flags
+None new this run — both promoted candidates have fully confirmed official-account sourcing (Senate YouTube channel, 60 Minutes/CBS account).

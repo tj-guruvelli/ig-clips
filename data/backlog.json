@@ -2,10 +2,10 @@
   "target": 100,
   "threshold_views": 1000000,
   "criteria": "1M+ views (plays or views); a REAL person in an interview/podcast/keynote/conference talking about AI (its value, risks, disruption, or their own adoption) in ANY industry — the speaker need NOT be an AI or tech figure, any well-known speaker in any field counts; NOT already posted on @theaibolt (dedup by speaker+topic vs full history); duration preferred 30-90s but longer viral clips OK (cut at edit); recent preferred but evergreen older 1M+ clips accepted (age flagged). EXCLUDE AI-generated/CGI video, memes, faceless voiceover, text-overlay news, no-speaker demos.",
-  "last_updated": "2026-07-27",
+  "last_updated": "2026-07-28",
   "available_count": 100,
-  "review_count": 14,
-  "status": "2026-07-27 run #7: theaibolt full-history resweep (200-limit request, 143/143 items, exact URL-set match) - zero new posts, 18 days since last post (2026-07-09), continued exhaustion confirmed. theaiaxon dedup (STEP 1b): Apify published-reels scrape returned 5 published reels (was 4) - 1 NEW: Jeff Bezos / America Business Forum ('AI reviews building permits in 10 seconds'), added to theaiaxon_published_exclusions. Checked against backlog candidates: no match, no pruning needed (this run's own X-search lane independently surfaced a Bezos clip on the exact same topic - excluded before it ever entered the backlog). Metricool getScheduledPosts (brandId 6566296, 2026-06-27 to 2026-08-26 window) returned only the already-tracked Elon Musk/Dwarkesh HAL-9000 post (still PUBLISHED status) - no new scheduled items. Both dedup checks succeeded, no errors - run IS fully deduped. Discovery: 3 parallel subagent lanes (Lane A: X/Twitter search for new speakers across tech/VC/entertainment/sports/music/health; Lane B: YouTube-native search, standing 4th lane per prior run's recommendation; Lane C: theme-page recency check on @evolving.ai/@theaifield/@theaipage/@airesearches/@ainterestingupdate/@godofprompt/@power.ai/@artificialintelligenceee/@thewizeai/@chatgptricks for posts after 2026-07-22). Lane C returned 0 qualifiers - the only 5 post-07-22 items over 1M views were all AI-generated/CGI anime recreations, a robot-fight demo, or a no-speaker product demo, all failing the hard FORMAT gate (consistent with this batch of theme pages skewing CGI-heavy). Lane A yielded 12 raw candidates, Lane B yielded 11 raw candidates; after dedup (2 Bezos dupes - one against the new theaiaxon exclusion, one exact-URL match to an existing 2026-07-25 backlog entry - plus a Marc Andreessen dupe and a Tristan Harris/Alibaba dupe both already in the backlog under different discovery dates) this run found 19 genuinely new qualifying URLs. Since available was 86/100 and only 14 were needed to hit the cap, the 14 highest-confidence, most pillar-balanced candidates were promoted to 'available' and the remaining 5 (Molly Crabapple, Bernie Sanders, Sasha Luccioni, Andrew Yang, Demis Hassabis 2nd-topic) were kept as 'review' status - all are clean 1M+ qualifiers, just held back purely because of the 100-cap, not because of any quality issue; promote them first next run before new discovery. New speakers unlocked this run: Bill McDermott, Chris Olah (Anthropic co-founder, distinct from saturated Dario Amodei), David Sacks, Murphy Campbell (musician, Emotional-pillar diversity pick), Gary Brecka, Matthew McConaughey/Timothee Chalamet, Adam Silver (NBA Commissioner), Joseph Gordon-Levitt, Roman Yampolskiy, Ian Bremmer, Rishi Sunak. Also added 2nd distinct topics for already-present speakers Mustafa Suleyman, Jensen Huang (new GTC 2026 keynote, 35.9M views - largest single view count surfaced this run), and Andrej Karpathy. BACKLOG NOW AT THE 100 CAP: available_count=100, review_count=14 (9 prior + 5 new surplus). No Apify quota errors across any of the 3 lanes or the theaibolt/theaiaxon refresh calls this run.",
+  "review_count": 12,
+  "status": "2026-07-28 run #8: theaibolt full-history resweep (200-limit request, 143/143 items, exact URL-set match) - zero new posts, max timestamp still 2026-07-09, 19 days of continued exhaustion confirmed. theaiaxon dedup (STEP 1b): Apify published-reels scrape returned 7 published reels (was 6) - 2 NEW since the 2026-07-27 run: Dario Amodei/CBS News (Pentagon supply-chain-risk story, posted 2026-07-27) and Geoffrey Hinton/60 Minutes (Scott Pelley 'second most intelligent species' question, posted 2026-07-27). Both added to theaiaxon_published_exclusions. Matched against backlog by speaker+topic: Dario/Pentagon matched candidate twitter.com/r0ck3t23/status/2027698383037591957 (same Pentagon/Anthropic supply-chain-risk story via The Economist) - PRUNED (status->posted). Hinton/60-Minutes matched candidate reel/DN1KONh3q8z (same 60-Minutes AI-surpasses-human-intelligence interview) - PRUNED (status->posted). Metricool getScheduledPosts (brandId 6566296, 2026-06-28 to 2026-08-27 window) returned only the already-tracked Elon Musk/Dwarkesh HAL-9000 post (PUBLISHED status, already excluded) - no new scheduled items. Both dedup checks succeeded, no errors - run IS fully deduped. Pruning dropped available_count to 98/100; per the 2026-07-27 run's own recommendation to promote surplus 'review' candidates before running new discovery, promoted the 2 highest-confidence review-surplus candidates back to 'available': Bernie Sanders (official Senate YouTube channel, no age flag) and Molly Crabapple (official 60 Minutes/CBS account, no age flag) - both clean 1M+ qualifiers with zero sourcing concerns. Sasha Luccioni (age-flagged 2023 TED talk), Andrew Yang (age-flagged, lowest views), and Demis Hassabis 2nd-topic (weaker re-upload sourcing) remain in 'review' as the next-best promotion candidates. No new discovery was run this cycle - backfilling via the vetted review pool avoided unnecessary Apify usage since available_count never dropped below 90. BACKLOG BACK AT THE 100 CAP: available_count=100, review_count=12 (was 14, -2 promoted). No Apify quota errors this run.",
   "candidates": [
     {
       "url": "https://www.instagram.com/p/DZ_-Ea2ggkY/",
@@ -258,8 +258,8 @@
       "source": "60 Minutes (CBS)",
       "credits": "@uncover.ai",
       "pillar": "Controversial",
-      "status": "available",
-      "note": "4th Hinton clip in backlog (DOAC, CNN, Nobel already present) - distinct topic/source, but space postings out per saturation_note.",
+      "status": "posted",
+      "note": "PRUNED 2026-07-28: @theaiaxon published reel DbT503bystF (2026-07-27) covers this exact Hinton/60-Minutes/Scott-Pelley 'second most intelligent species' interview - same speaker+topic, dedup match under STEP 1b. Removed from available pool.",
       "added": "2026-07-22"
     },
     {
@@ -468,8 +468,8 @@
       "source": "The Economist (confirmed via web search)",
       "credits": "@r0ck3t23 (X repost), platform=X",
       "pillar": "Emotional",
-      "status": "available",
-      "note": "New via X search 2026-07-23. 3rd Dario clip in this batch - space out. Emotional pillar (visible toll, high stakes).",
+      "status": "posted",
+      "note": "PRUNED 2026-07-28: @theaiaxon published reel DbUFJephspe (2026-07-27) covers this exact Dario Amodei / Pentagon supply-chain-risk-label / Hegseth-Trump story (via CBS News instead of The Economist) - same speaker+topic, dedup match under STEP 1b. Removed from available pool.",
       "added": "2026-07-23"
     },
     {
@@ -1668,8 +1668,8 @@
       "credits": "60 Minutes / CBS News",
       "platform": "X",
       "pillar": "Controversial",
-      "status": "review",
-      "note": "SURPLUS: qualifies clean (official 60 Minutes account, high confidence) but held back from 'available' only because the 100-cap was reached this run. Promote next run as slots open.",
+      "status": "available",
+      "note": "PROMOTED 2026-07-28: backfilling the 2 slots opened by pruning the Hinton/60-Minutes and Dario/Pentagon dupes. Clean qualifier, official 60 Minutes account.",
       "added": "2026-07-27"
     },
     {
@@ -1684,8 +1684,8 @@
       "credits": "Sen. Bernie Sanders",
       "platform": "YouTube",
       "pillar": "Controversial",
-      "status": "review",
-      "note": "SURPLUS: qualifies clean (official Senate channel) but held back only because the 100-cap was reached this run. Promote next run as slots open.",
+      "status": "available",
+      "note": "PROMOTED 2026-07-28: backfilling the 2 slots opened by pruning the Hinton/60-Minutes and Dario/Pentagon dupes. Clean qualifier, official Senate channel.",
       "added": "2026-07-27"
     },
     {
@@ -1786,6 +1786,22 @@
       "source": "America Business Forum",
       "posted_on_theaiaxon": "2026-07-26",
       "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Caused exclusion of an X-search candidate (SmallCapSnipa repost) found this run that had the same topic."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbUFJephspe/",
+      "speaker": "Dario Amodei / CBS News",
+      "topic": "Pentagon asked Anthropic to drop no-spying/no-autonomous-weapons limits from its defense contract; Amodei refused, Trump ordered agencies to stop using Anthropic, Hegseth labeled it a supply-chain risk",
+      "source": "CBS News",
+      "posted_on_theaiaxon": "2026-07-27",
+      "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Caused pruning of backlog candidate twitter.com/r0ck3t23/status/2027698383037591957 (same story via The Economist)."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbT503bystF/",
+      "speaker": "Geoffrey Hinton / 60 Minutes",
+      "topic": "Scott Pelley asks if humans will become the second most intelligent species on the planet; Hinton says 'yeah'",
+      "source": "60 Minutes (CBS)",
+      "posted_on_theaiaxon": "2026-07-27",
+      "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Caused pruning of backlog candidate reel/DN1KONh3q8z (same 60 Minutes interview, same AI-surpasses-human-intelligence topic)."
     }
   ],
   "alert_threshold": 90,
