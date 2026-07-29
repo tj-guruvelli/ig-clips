@@ -528,3 +528,24 @@ The remaining 3 review-surplus candidates (Sasha Luccioni — age-flagged 2023 T
 
 ### UNCONFIRMED flags
 None new this run — both promoted candidates have fully confirmed official-account sourcing (Senate YouTube channel, 60 Minutes/CBS account).
+
+## 2026-07-29 — Run #9: Apify monthly quota exhausted, no changes made
+
+Backlog entered this run already at the 100/100 cap (unchanged since the 2026-07-28 run #8).
+
+**STEP 1 (@theaibolt resweep):** `apify/instagram-reel-scraper` for `theaibolt` (resultsLimit 200) failed: **"Monthly usage hard limit exceeded."** Source-history could not be refreshed this cycle. Last known-good sweep remains 2026-07-28 (143/143 items, zero new since 2026-07-09).
+
+**STEP 1b (@theaiaxon dedup):** The Apify published-reels scrape for `theaiaxon` (resultsLimit 100) failed with the same **"Monthly usage hard limit exceeded"** error. Re-probed with a minimal `resultsLimit: 5` call to rule out a parameter issue — failed identically, confirming this is an account-wide monthly cap, not an actor/input problem.
+
+The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296, 2026-06-29 to 2026-08-28, America/Chicago) returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post (`PUBLISHED`, already in `theaiaxon_published_exclusions`) — no new scheduled items.
+
+**Per protocol, because the published-reels half of the dedup check could not run, this cycle is NOT fully deduped against @theaiaxon's published library.** No pruning (STEP 2) was performed on that basis — acting on stale published-reel data risked leaving a just-posted duplicate in the pool, or worse, pruning something incorrectly. The backlog was left exactly as run #8 left it: available 100/100, review 12, posted 2.
+
+**STEP 3/4 (discovery):** Not needed — available_count was already at the 100 cap before this run. Would have been blocked by the same quota exhaustion regardless.
+
+**Files changed this run:** only the `last_updated` timestamp and `status`/`notes` narrative fields in `data/backlog.json` and `data/found_clips.json`, recording the quota block. No candidates added, pruned, or promoted.
+
+**NEXT RUN:** retry the @theaiaxon published-reels scrape first, before anything else, to close this one-day dedup gap. If Apify quota is still exhausted, keep skipping pruning/discovery and keep reporting the gap explicitly rather than assuming a clean dedup.
+
+### UNCONFIRMED flags
+None new this run (no discovery performed).
