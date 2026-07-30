@@ -549,3 +549,24 @@ The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296,
 
 ### UNCONFIRMED flags
 None new this run (no discovery performed).
+
+## 2026-07-30 — Run #10: Apify monthly quota still exhausted, no changes made
+
+Backlog entered this run already at the 100/100 cap (unchanged since the 2026-07-28 run #8).
+
+**STEP 1 (@theaibolt resweep):** `apify/instagram-reel-scraper` for `theaibolt` (resultsLimit 200) failed immediately: **"Monthly usage hard limit exceeded."** Source-history could not be refreshed this cycle. Last known-good sweep remains 2026-07-28 (143/143 items, zero new since 2026-07-09).
+
+**STEP 1b (@theaiaxon dedup):** The Apify published-reels scrape for `theaiaxon` (resultsLimit 100) failed with the same **"Monthly usage hard limit exceeded"** error. This is now the **4th consecutive day** of account-wide Apify exhaustion (2026-07-27/28 onward per run #9's history, confirmed again today).
+
+The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296, 2026-06-30 to 2026-08-29, America/Chicago) returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post (`PUBLISHED`, already in `theaiaxon_published_exclusions`) — no new scheduled items.
+
+**Per protocol, because the published-reels half of the dedup check could not run, this cycle is NOT fully deduped against @theaiaxon's published library.** No pruning (STEP 2) was performed on that basis. The backlog was left exactly as run #9 left it: available 100/100, review 12, posted 2.
+
+**STEP 3/4 (discovery):** Not needed — available_count was already at the 100 cap before this run. Would have been blocked by the same quota exhaustion regardless.
+
+**Files changed this run:** only the `last_updated` timestamp and `status`/`notes` narrative fields in `data/backlog.json` and `data/found_clips.json`, recording the continued quota block. No candidates added, pruned, or promoted.
+
+**NEXT RUN:** retry the @theaiaxon published-reels scrape first, before anything else, to close the growing dedup gap. If Apify quota is still exhausted, keep skipping pruning/discovery and keep reporting the gap explicitly rather than assuming a clean dedup just because several days have passed without one.
+
+### UNCONFIRMED flags
+None new this run (no discovery performed).
