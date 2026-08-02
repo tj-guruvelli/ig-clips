@@ -311,8 +311,8 @@
     "https://www.instagram.com/p/DXXif4oxVRy/",
     "https://www.instagram.com/p/DXmNiS7EVuQ/"
   ],
-  "last_updated": "2026-08-01",
-  "notes": "RUN #12 2026-08-01: Apify monthly usage hard limit exceeded again (6th consecutive day; confirmed still blocked at the start of a new calendar month, so this is not a simple monthly-cycle reset - likely needs a plan/billing check). theaiaxon published-reels scrape (resultsLimit:100) failed immediately with 'Monthly usage hard limit exceeded'; theaibolt resweep skipped as redundant given the account-wide block. Metricool getScheduledPosts succeeded, returned only the already-known Elon Musk/Dwarkesh HAL-9000 published post, no new items. No new URLs found or added this run.",
+  "last_updated": "2026-08-02",
+  "notes": "RUN #13 2026-08-02: Apify monthly usage hard limit exceeded again - 7th consecutive day, a full week of the account-wide block with no reset observed. theaiaxon published-reels scrape (resultsLimit:100) failed immediately with 'Monthly usage hard limit exceeded'; theaibolt resweep skipped as redundant given the reconfirmed account-wide block. Metricool getScheduledPosts succeeded, returned only the already-known Elon Musk/Dwarkesh HAL-9000 published post, no new items. No new URLs found or added this run.",
   "clips_log": {
     "https://www.instagram.com/p/Da7kkKlKMJG/": {
       "platform": "instagram",
