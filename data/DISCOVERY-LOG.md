@@ -648,3 +648,22 @@ The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296,
 
 ### UNCONFIRMED flags
 None new this run (no discovery performed).
+
+## 2026-08-04 — Run #15: Apify monthly quota still exhausted (9th consecutive day), no changes made
+
+Backlog entered this run already at the 100/100 cap (unchanged since the 2026-07-28 run #8).
+
+**STEP 1b (@theaiaxon dedup):** The Apify published-reels scrape for `theaiaxon` (`apify/instagram-reel-scraper`, resultsLimit 100) failed immediately: **"Monthly usage hard limit exceeded."** This is the **9th consecutive day** of account-wide Apify exhaustion (since 2026-07-27/28). STEP 1 (`@theaibolt` resweep) was skipped as redundant once the account-wide block was reconfirmed.
+
+The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296, 2026-07-05 to 2026-09-03, America/Chicago) returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post (`PUBLISHED`, already in `theaiaxon_published_exclusions`) — no new scheduled or published items to prune against.
+
+**Per protocol, because the Apify published-reels half of the dedup check could not run, this cycle is NOT fully deduped against @theaiaxon's published library.** No pruning (STEP 2) was performed on that basis. The backlog was left exactly as run #14 left it: available 100/100, review 12, posted 2.
+
+**STEP 3/4 (discovery):** Not needed — available_count was already at the 100 cap before this run. Would have been blocked by the same quota exhaustion regardless.
+
+**Files changed this run:** only the `last_updated` timestamp and `status`/`notes` narrative fields in `data/backlog.json` and `data/found_clips.json`, recording the continued quota block. No candidates added, pruned, or promoted.
+
+**NEXT RUN:** retry the @theaiaxon published-reels scrape first. Nine straight days without any reset, spanning a full calendar-month boundary, is no longer consistent with a normal rolling monthly cap — this is escalated again as very likely requiring a manual Apify plan/billing check. The routine cannot self-resolve this; it needs human action on the Apify account.
+
+### UNCONFIRMED flags
+None new this run (no discovery performed).
