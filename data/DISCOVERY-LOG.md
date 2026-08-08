@@ -724,3 +724,43 @@ The Metricool half of STEP 1b did succeed: `getScheduledPosts` (brandId 6566296,
 
 ### UNCONFIRMED flags
 None new this run (no discovery performed).
+
+## 2026-08-08 — Run #19: Apify quota RESTORED, first fully-deduped run in 12 days, 3 dedup prunes + 3 promotions
+
+**Apify quota restored.** After 12 straight blocked days (2026-07-27 through 2026-08-07), today's `apify/instagram-reel-scraper` calls both succeeded on the first try. This is the first run since 2026-07-27 that could fully complete STEP 1b.
+
+**STEP 1b (@theaiaxon dedup):** Scraped @theaiaxon's published reels (resultsLimit 100, actual account total is 26 posts, 44/45 pages crawled). Only 8 of those 26 were already tracked in `theaiaxon_published_exclusions`; the other **18 span 2026-07-28 through 2026-08-05** and were new to this run — the entire 12-day quota outage window had gone unchecked. Added 19 new exclusion entries (one theaiaxon post triggered 2 separate dedup matches, see below).
+
+`getScheduledPosts` (brandId 6566296, 2026-07-09 to 2026-09-07, America/Chicago) returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post. Note: that post (`reel/DbL8iQzEtO1`) does **not** appear in today's 26-item published-reels dataset despite Metricool confirming it live — likely the 1 uncrawled page (44/45) or an IG API inconsistency. Kept in exclusions regardless since Metricool independently confirms it's published.
+
+**STEP 1 (@theaibolt resweep):** Ran the full 200-result resweep (got all 143 posts). Newest post timestamp found: **2026-06-21** — confirms zero new theaibolt activity in over 7 weeks, consistent with the account being marked exhausted/dormant on 2026-07-09. No changes to `posted_urls`.
+
+**STEP 2 (prune) — 3 true duplicates found and pruned to `status: posted`:**
+
+| Backlog candidate | Speaker/topic | Matched theaiaxon post |
+|---|---|---|
+| `DM8ctKUu46P` | Mo Gawdat — "short-term dystopia" (Diary of a CEO) | `DbcUDwztmgj` (2026-07-31) — same speaker, same show, same "12-15 years, escalating through 2027, human value system not AI" framing |
+| `youtube.com/watch?v=UclrVWafRAI` | Roman Yampolskiy — AI safety (Diary of a CEO w/ Steven Bartlett) | `DbgZhJnB3pq` (2026-08-01) — same speaker, same show/episode source |
+| `twitter.com/teslaownersSV/status/1868894670476239164` | Sam Altman — "no equity, does it because he loves it" | `DbWEBhupk3I` (2026-07-28, Senate Judiciary) — same underlying quote/story, different framing device |
+
+This means for 12 days the backlog was silently holding 3 candidates that were, in fact, already posted on @theaiaxon — a direct illustration of why the "NOT fully deduped" flag during quota outages matters. No evidence any of the 3 were actually scheduled/posted from the backlog during the outage, so no live-content risk materialized, but this closes the gap.
+
+**Backfill:** rather than spend fresh Apify discovery quota, promoted 3 previously-flagged "surplus, promote next run" review-bucket items to fill the 3 opened slots — all had already cleared the 1M+ gate and had zero conflict against the newly-expanded exclusion set:
+- Sasha Luccioni — TED talk, AI bias/environmental cost vs. sci-fi doomerism (1.9M views)
+- Andrew Yang — CNBC interview, AI's impact on the workforce (1.0M views)
+- Demis Hassabis (debate w/ Dario Amodei) — WEF Davos 2026, what the world looks like after AGI (1.1M views, re-upload source — lower confidence, verify primary source before scheduling)
+
+**Result:** available 100/100 (back at cap), review 9 (was 12), posted 5 (was 2).
+
+### Top picks by views (unchanged available pool, highlighting strongest untouched candidates)
+1. Roman Yampolskiy / Lex Fridman — 30.2M views — "99.9999% chance AGI destroys civilization"
+2. Ray Kurzweil / Joe Rogan — 36.2M views — "AI reaches human-level intelligence by 2029"
+3. Jensen Huang / NVIDIA GTC 2026 keynote — 36.0M views — AI infrastructure, physical AI, agentic roadmap
+
+### 3 inline-rule hooks for the newly-promoted additions
+1. Sasha Luccioni says the AI art heist already happened. Nobody noticed.
+2. Andrew Yang warned about this job years before anyone believed him.
+3. Demis Hassabis debated what happens after AGI arrives. The room went quiet.
+
+### UNCONFIRMED flags
+- Demis Hassabis/Dario Amodei Davos debate (`02YLwsCKUww`) — sourced via a re-upload (DRM News) rather than the primary WEF channel; promoted this run to fill a cap slot but verify the primary source before scheduling.

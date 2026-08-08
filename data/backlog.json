@@ -2,10 +2,10 @@
   "target": 100,
   "threshold_views": 1000000,
   "criteria": "1M+ views (plays or views); a REAL person in an interview/podcast/keynote/conference talking about AI (its value, risks, disruption, or their own adoption) in ANY industry \u2014 the speaker need NOT be an AI or tech figure, any well-known speaker in any field counts; NOT already posted on @theaibolt (dedup by speaker+topic vs full history); duration preferred 30-90s but longer viral clips OK (cut at edit); recent preferred but evergreen older 1M+ clips accepted (age flagged). EXCLUDE AI-generated/CGI video, memes, faceless voiceover, text-overlay news, no-speaker demos.",
-  "last_updated": "2026-08-07",
+  "last_updated": "2026-08-08",
   "available_count": 100,
-  "review_count": 12,
-  "status": "2026-08-07 run #18: APIFY MONTHLY QUOTA STILL EXHAUSTED (12th consecutive day). apify/instagram-reel-scraper for theaiaxon STEP 1b published-reels scrape (resultsLimit:100) failed immediately with 'Monthly usage hard limit exceeded'; theaibolt STEP 1 resweep skipped as redundant given the reconfirmed account-wide block. Metricool getScheduledPosts (brandId 6566296, 2026-07-08 to 2026-09-06, America/Chicago) succeeded and returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post (PUBLISHED, already in theaiaxon_published_exclusions) - no new scheduled items, no new matches to prune. Per protocol, because the Apify published-reels half of STEP 1b could not run, this cycle is NOT fully deduped against @theaiaxon's published library. No pruning or discovery performed. Backlog left exactly as run #17 left it: available 100/100, review 12, posted 2. Twelve consecutive days without a quota reset, spanning a calendar-month boundary, confirms this is a plan-level cap rather than a rolling monthly window - a manual Apify billing/plan check is needed before the dedup guarantee can be trusted again.",
+  "review_count": 9,
+  "status": "2026-08-08 run #19: APIFY QUOTA RESTORED (first successful call after 12 straight blocked days, 2026-07-27 through 2026-08-07). Ran full STEP 1b: apify/instagram-reel-scraper for theaiaxon (resultsLimit:100) succeeded, returned 26 published reels total (44/45 pages crawled - 1 page did not complete, so treat this as near-complete not exhaustive). Only 8 of those 26 were already tracked in theaiaxon_published_exclusions (all posts through 2026-07-27); the other 18 span 2026-07-28 through 2026-08-05 and were new to this run - added as 19 new exclusion entries (one theaiaxon post, DbcUDwztmgj, generated 2 dedup hits so entry count differs slightly from post count, see below). Cross-referencing all 26 published posts against the backlog by speaker+topic found 3 true duplicates, now pruned to status=posted: Mo Gawdat 'short-term dystopia' (DZCLt2xOpcf-adjacent entry DM8ctKUu46P) matched published DbcUDwztmgj; Roman Yampolskiy Diary-of-a-CEO AI-safety segment (YouTube UclrVWafRAI) matched published DbgZhJnB3pq; Sam Altman 'no equity, loves it' (X teslaownersSV) matched published DbWEBhupk3I (Senate Judiciary framing). Metricool getScheduledPosts (brandId 6566296, 2026-07-09 to 2026-09-07, America/Chicago) returned only the single already-tracked Elon Musk/Dwarkesh HAL-9000 post (PUBLISHED) - note this HAL-9000 post (reel/DbL8iQzEtO1) does NOT appear in the 26-item Apify published-reels dataset despite Metricool confirming it live; likely the 1 uncrawled page, or IG API inconsistency - kept in exclusions regardless since Metricool independently confirms it published. Refreshed @theaibolt full history (200-result resweep, got all 143 posts) - newest post timestamp found was 2026-06-21, confirming zero new theaibolt activity since the account was marked exhausted; no new posted_urls or exclusions from this source. Backfilled the 3 slots opened by pruning with 3 previously-flagged 'surplus, promote next run' review-bucket items (Sasha Luccioni TED, Andrew Yang CNBC, Demis Hassabis WEF-Davos debate) - all 3 already cleared the 1M+ gate and had zero dedup conflict against the newly-expanded exclusion set. No fresh Apify discovery scraping was needed since promoting from the review bucket refilled the cap without spending quota. Result: available 100/100 (back at cap), review 9 (was 12), posted 5 (was 2). This is the first fully-deduped run since 2026-07-27 - the 12-day quota outage means every run in between could not guarantee the theaiaxon dedup, and this run confirms 3 of that period's backlog entries had in fact already been posted and needed pruning.",
   "candidates": [
     {
       "url": "https://www.instagram.com/p/DZ_-Ea2ggkY/",
@@ -303,8 +303,8 @@
       "source": "Diary of a CEO",
       "credits": "@thediaryofaceopodcast",
       "pillar": "Controversial",
-      "status": "available",
-      "note": "Third Mo Gawdat clip in backlog total - heavy saturation for this speaker now, deprioritize further Gawdat sourcing.",
+      "status": "posted",
+      "note": "PRUNED 2026-08-08: @theaiaxon published reel DbcUDwztmgj (2026-07-31) covers this exact Mo Gawdat/Diary-of-a-CEO 'short-term dystopia in 12-15 years, escalating through 2027, human value system not AI is the problem' segment - same speaker+topic, dedup match under STEP 1b. Removed from available pool.",
       "added": "2026-07-22"
     },
     {
@@ -858,8 +858,8 @@
       "source": "UNCONFIRMED - widely-clipped quote, possibly Senate AI oversight testimony or a press interview",
       "credits": "@teslaownersSV (repost), platform=X",
       "pillar": "Inspirational",
-      "status": "available",
-      "note": "New via X search 2026-07-24. Distinct topic from the Tucker Carlson teen-safety clip already published on theaiaxon (never resurface that one). Massive view count. Duration unconfirmed, cut 30-90s at edit.",
+      "status": "posted",
+      "note": "PRUNED 2026-08-08: @theaiaxon published reel DbWEBhupk3I (2026-07-28, Senate Judiciary Subcommittee) covers this exact Sam Altman 'no equity in OpenAI, does it because he loves it' story - same speaker+topic (different framing device, same underlying quote/fact pattern), dedup match under STEP 1b. Removed from available pool.",
       "added": "2026-07-24"
     },
     {
@@ -1572,8 +1572,8 @@
       "credits": "The Diary Of A CEO / Steven Bartlett",
       "platform": "YouTube",
       "pillar": "Educational",
-      "status": "available",
-      "note": "New speaker via YouTube search 2026-07-27. Full ~90min episode; clip the AI-jobs-forecast segment before scheduling.",
+      "status": "posted",
+      "note": "PRUNED 2026-08-08: @theaiaxon published reel DbgZhJnB3pq (2026-08-01) covers this exact Roman Yampolskiy/Diary-of-a-CEO-with-Steven-Bartlett AI-safety segment (ceiling on harm lifted like nuclear weapons, cost of harm falling) - same speaker+show, dedup match under STEP 1b. Removed from available pool.",
       "added": "2026-07-27"
     },
     {
@@ -1700,8 +1700,8 @@
       "credits": "TED",
       "platform": "YouTube",
       "pillar": "Controversial",
-      "status": "review",
-      "note": "SURPLUS + AGE-FLAGGED (2023 TED talk, evergreen). Held back only because the 100-cap was reached this run.",
+      "status": "available",
+      "note": "PROMOTED 2026-08-08: backfilling one of the 3 slots opened by pruning 3 theaiaxon-dedup matches this run. SURPLUS + AGE-FLAGGED (2023 TED talk, evergreen) but clean qualifier, no dedup conflict found.",
       "added": "2026-07-27"
     },
     {
@@ -1716,8 +1716,8 @@
       "credits": "CNBC Television",
       "platform": "YouTube",
       "pillar": "Educational",
-      "status": "review",
-      "note": "SURPLUS + AGE-FLAGGED (just over 12 months old) + lowest view count of this run's batch. Held back, promote next run.",
+      "status": "available",
+      "note": "PROMOTED 2026-08-08: backfilling one of the 3 slots opened by pruning 3 theaiaxon-dedup matches this run. SURPLUS + AGE-FLAGGED (just over 12 months old) but clean qualifier, no dedup conflict found.",
       "added": "2026-07-27"
     },
     {
@@ -1732,8 +1732,8 @@
       "credits": "World Economic Forum / DRM News",
       "platform": "YouTube",
       "pillar": "Educational",
-      "status": "review",
-      "note": "SURPLUS: 2nd topic for this speaker, weaker sourcing (re-upload rather than primary WEF channel) and lowest confidence of this run's batch. Held back, verify primary source before promoting.",
+      "status": "available",
+      "note": "PROMOTED 2026-08-08: backfilling one of the 3 slots opened by pruning 3 theaiaxon-dedup matches this run. SURPLUS, 2nd topic for this speaker, weaker sourcing (re-upload rather than primary WEF channel) - flagged, but no dedup conflict found; source still unverified so treat as lower-confidence pick.",
       "added": "2026-07-27"
     }
   ],
@@ -1802,6 +1802,158 @@
       "source": "60 Minutes (CBS)",
       "posted_on_theaiaxon": "2026-07-27",
       "note": "Never resource this speaker+topic combination again even if the source clip surfaces under a different URL/repost. Caused pruning of backlog candidate reel/DN1KONh3q8z (same 60 Minutes interview, same AI-surpasses-human-intelligence topic)."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbhLUoXN8IT/",
+      "speaker": "Jensen Huang / Lex Fridman Podcast",
+      "topic": "AI agents creating more agents lets one person run a company of thousands with no hiring",
+      "source": "Lex Fridman Podcast",
+      "posted_on_theaiaxon": "2026-08-02",
+      "note": "Added 2026-08-08 (backfilling the 12-day quota outage). No dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbjYXechCbA/",
+      "speaker": "Tristan Harris / Mighty Pursuit Podcast",
+      "topic": "Calls AI workers a 'flood of digital immigrants' replacing human labor, cites OpenAI's own charter language",
+      "source": "Mighty Pursuit Podcast",
+      "posted_on_theaiaxon": "2026-08-02",
+      "note": "Added 2026-08-08. Distinct from the other 2 Tristan Harris backlog entries (Milken/Alibaba-crypto-mining, Modern Wisdom/lab-leaders-prepping-for-collapse) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbjmMQDtEBm/",
+      "speaker": "Rohin Shah / 80,000 Hours Podcast",
+      "topic": "Google DeepMind researcher pushes back on the AI intelligence-explosion/recursive-self-improvement prediction, compares AI to the microscope",
+      "source": "80,000 Hours Podcast",
+      "posted_on_theaiaxon": "2026-08-02",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbmLzMSNk8B/",
+      "speaker": "Nat Friedman / Stripe Sessions",
+      "topic": "Ex-GitHub CEO gave his AI agent home camera + health data access; agent messaged him to drink water and watched him do it",
+      "source": "Stripe Sessions",
+      "posted_on_theaiaxon": "2026-08-03",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/Dbo4l6QNhSm/",
+      "speaker": "Nazariy Dumanskyy / Jack Neel Podcast",
+      "topic": "Poppy AI co-founder says he'd partner with an existing creator's audience rather than build a following, using AI to build the product",
+      "source": "Jack Neel Podcast",
+      "posted_on_theaiaxon": "2026-08-05",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/DboI1ScBuQo/",
+      "speaker": "Greg Brockman / Big Technology Podcast",
+      "topic": "OpenAI president's answer to people scared of AI job loss: 'try the tools' - fear from headlines differs from hands-on experience",
+      "source": "Big Technology Podcast",
+      "posted_on_theaiaxon": "2026-08-04",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/Dbepzb3tAC5/",
+      "speaker": "Karen Hao / The Diary of a CEO",
+      "topic": "Investigative journalist (300+ OpenAI interviews) argues the AI industry's explicit goal is replacing human workers, not augmenting them",
+      "source": "The Diary of a CEO",
+      "posted_on_theaiaxon": "2026-08-01",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbgZhJnB3pq/",
+      "speaker": "Dr. Roman Yampolskiy / Diary of a CEO",
+      "topic": "AI-safety-field founder says the ceiling on how much harm one person/group can cause is lifting again like it did with nuclear weapons, and the cost of causing harm keeps falling",
+      "source": "Diary of a CEO",
+      "posted_on_theaiaxon": "2026-08-01",
+      "note": "Added 2026-08-08. Caused pruning of backlog candidate youtube.com/watch?v=UclrVWafRAI (same speaker, same Diary of a CEO/Steven Bartlett episode, AI-safety-and-jobs topic). Backlog still has a distinct Yampolskiy/Lex Fridman '99.9999% doom probability' clip (x.com/lexfridman/status/1797383905034514684) - different show/quote, kept as available."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbbhalwSZ6n/",
+      "speaker": "Jensen Huang / Axios Behind the Curtain",
+      "topic": "Calls the AI-job-panic 'complete nonsense', draws the distinction between a task (automatable) and a job's underlying purpose (durable)",
+      "source": "Axios Behind the Curtain",
+      "posted_on_theaiaxon": "2026-07-30",
+      "note": "Added 2026-08-08. Distinct from the other 2 Jensen Huang backlog entries (GTC NPC-dialogue demo, GTC 2026 infrastructure keynote) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbmguYtRhIb/",
+      "speaker": "Chris Olah / Lex Fridman Podcast",
+      "topic": "Anthropic co-founder describes AI models as 'grown' not written, compares Claude to a biological organism being studied rather than software being read",
+      "source": "Lex Fridman Podcast",
+      "posted_on_theaiaxon": "2026-08-04",
+      "note": "Added 2026-08-08. Distinct from the other Chris Olah backlog entry (TFTC21/Vatican-Pope-Leo interpretability talk) - no dedup conflict, but speaker now has 2 topics total, space out."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbjC08ayDf5/",
+      "speaker": "Dan Martell / The 505 Podcast (Mark Brazil)",
+      "topic": "Names 'agent operator' as the highest-value new job - pointing teams of AI agents at work instead of doing it by hand",
+      "source": "The 505 Podcast",
+      "posted_on_theaiaxon": "2026-08-02",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog. Note: theaiaxon also published a 2nd Dan Martell clip (Dbqm3geA1ip, Kai Voss AI employee) on 2026-08-05 - same speaker twice, distinct topics."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbWfJIMBboF/",
+      "speaker": "Elon Musk / The Joe Rogan Experience",
+      "topic": "Calls the coming job displacement a 'supersonic tsunami' - digital desk jobs go first and fastest, physical-world jobs have more runway",
+      "source": "The Joe Rogan Experience",
+      "posted_on_theaiaxon": "2026-07-28",
+      "note": "Added 2026-08-08. Distinct from existing Elon Musk backlog entries (Neuralink deep dive, AI/physics/humanity ep400, Einstein-tutors) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbYzIaEy6DR/",
+      "speaker": "Aravind Srinivas / Stanford GSB View From The Top",
+      "topic": "Perplexity founder explains the company's $23B valuation was built without training its own foundation model",
+      "source": "Stanford GSB View From The Top",
+      "posted_on_theaiaxon": "2026-07-29",
+      "note": "Added 2026-08-08. Distinct from existing Aravind Srinivas backlog entry (Joe Rogan/Microsoft-invented-office-worker) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbfEUMaNawz/",
+      "speaker": "Ilya Sutskever / Dwarkesh Podcast",
+      "topic": "Uses a stroke patient who lost emotion (not intelligence) as an analogy for why AI has logic but no 'wanting' or values compass",
+      "source": "Dwarkesh Podcast",
+      "posted_on_theaiaxon": "2026-08-01",
+      "note": "Added 2026-08-08. Distinct from existing Ilya Sutskever backlog entry (Yuchenj_UW/University-of-Toronto-convocation, brain-as-biological-computer) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/Dbqm3geA1ip/",
+      "speaker": "Dan Martell / @openresidency",
+      "topic": "His AI outreach agent named itself Kai Voss, generated its own face, and talks to hundreds of people daily who don't know it's not human",
+      "source": "@openresidency",
+      "posted_on_theaiaxon": "2026-08-05",
+      "note": "Added 2026-08-08. 2nd Dan Martell topic published (see DbjC08ayDf5 above) - no backlog candidates for this speaker, no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbZDnpHOZFk/",
+      "speaker": "Joanna Stern / The Wall Street Journal",
+      "topic": "Reviews the NEO home robot (1X) and reveals the 'AI' demo tasks were actually a human operator teleoperating it via VR",
+      "source": "The Wall Street Journal",
+      "posted_on_theaiaxon": "2026-07-29",
+      "note": "Added 2026-08-08. New speaker, no dedup conflict found in backlog."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbZdH30NGn3/",
+      "speaker": "Sam Altman / Huge Conversations with Cleo Abram",
+      "topic": "Says he's not worried about 22-year-olds adapting to AI job disruption, but is worried about 62-year-olds who don't want to reskill",
+      "source": "Huge Conversations with Cleo Abram",
+      "posted_on_theaiaxon": "2026-07-30",
+      "note": "Added 2026-08-08. Distinct from other Altman backlog/published entries (Tucker-Carlson-teen-safety already excluded, no-equity/Senate now excluded below, GPT-5-reaction, competitive-programmer, 2023-Senate-testimony) - no dedup conflict."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbcUDwztmgj/",
+      "speaker": "Mo Gawdat / Diary of a CEO",
+      "topic": "Predicts a 'short-term dystopia' over the next 12-15 years, escalating through 2027, caused by humanity's value system (money) rather than AI itself",
+      "source": "Diary of a CEO",
+      "posted_on_theaiaxon": "2026-07-31",
+      "note": "Added 2026-08-08. Caused pruning of backlog candidate reel/DM8ctKUu46P (same speaker, same Diary of a CEO 'next 15 years short-term dystopia driven by human greed' topic). Backlog still has 2 other distinct Mo Gawdat clips (30%-jobs-by-2028, emergency-episode-point-of-no-return) - kept as available."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbWEBhupk3I/",
+      "speaker": "Sam Altman / Senate Judiciary Subcommittee",
+      "topic": "Runs an $850B company for $76K/year, says he has no OpenAI equity and does it because he loves it; Sen. Kennedy tells him to get a lawyer",
+      "source": "U.S. Senate Judiciary Committee",
+      "posted_on_theaiaxon": "2026-07-28",
+      "note": "Added 2026-08-08. Caused pruning of backlog candidate twitter.com/teslaownersSV/status/1868894670476239164 (same 'no equity, does it because he loves it' story, same underlying quote). Backlog still has a distinct 2023-Senate-testimony-on-regulation clip (youtube.com/watch?v=fP5YdyjTfG0) - different hearing/topic, kept as available."
     }
   ],
   "alert_threshold": 90,
