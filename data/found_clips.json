@@ -311,8 +311,8 @@
     "https://www.instagram.com/p/DXXif4oxVRy/",
     "https://www.instagram.com/p/DXmNiS7EVuQ/"
   ],
-  "last_updated": "2026-08-07",
-  "notes": "RUN #18 2026-08-07: Apify monthly usage hard limit exceeded again - 12th consecutive day, no reset observed. theaiaxon published-reels scrape (resultsLimit:100) failed immediately with 'Monthly usage hard limit exceeded'; theaibolt resweep skipped as redundant given the reconfirmed account-wide block. Metricool getScheduledPosts succeeded, returned only the already-known Elon Musk/Dwarkesh HAL-9000 published post, no new items. No new URLs found or added this run.",
+  "last_updated": "2026-08-08",
+  "notes": "RUN #19 2026-08-08: APIFY QUOTA RESTORED after 12 straight blocked days. theaiaxon published-reels scrape succeeded (26 posts total, 44/45 pages). theaibolt full 200-result resweep also succeeded (143 posts, newest timestamp 2026-06-21 - confirms zero new theaibolt activity, no changes needed to posted_urls). Full STEP 1b dedup found 3 backlog candidates already covered by @theaiaxon's published library (Mo Gawdat short-term-dystopia, Roman Yampolskiy Diary-of-a-CEO AI-safety, Sam Altman no-equity/Senate) - pruned to posted in backlog.json, 19 new posts added to theaiaxon_published_exclusions. No new source clips discovered this run (backlog topped back to 100/100 by promoting 3 already-vetted 'surplus' review-bucket items instead of spending fresh Apify discovery quota) - found_urls unchanged.",
   "clips_log": {
     "https://www.instagram.com/p/Da7kkKlKMJG/": {
       "platform": "instagram",
